@@ -1,5 +1,4 @@
 # familiaxfamilia
-Deployment Proyecto FamiliaxFamilia en Laravel
 Este proyecto es una aplicación web de gestión de perfiles desarrollada con Laravel. Permite a los usuarios actualizar su información personal, habilidades y talentos, así como gestionar su seguridad mediante la actualización de contraseñas y eliminación de cuentas. La aplicación está estructurada con múltiples formularios que guían al usuario a través de diferentes pasos para facilitar la actualización de su perfil.
 
 Características Principales
