@@ -1,4 +1,4 @@
-<form class="md:w-1/2 space-y-5" wire:submit.prevent='crearVacante'>
+<form class="md:w-1/2 space-y-5" wire:submit.prevent='editarVacante'>
      
     <!-- INGRESO DE TITUTLO DE OPORTUNIDAD -->
     <div>
@@ -70,26 +70,31 @@
         <x-input-error class="mt-2" :messages="$errors->get('descripcion')" />
     </div>
 
-    <!-- INGRESO DE IMAGEN O ARCHIVO -->
+    <!-- INGRESO DE IMAGEN O ARCHIVO --> 
     <div>
         <x-input-label for="imagen" :value="__('Imagen')" />
         <x-text-input 
             id="imagen" 
             class="block mt-1 w-full" 
             type="file" 
-            wire:model="imagen" 
+            wire:model="imagen_nueva" 
             accept="image/*"
         />
 
         <div class="my-5 w-80">
-            @if ($imagen)
-                Vista Previa de Imagen:
-                <img src="{{ $imagen->temporaryUrl() }}" >
+            <x-input-label :value="__('Imagen Actual')" />
+            <img src=" {{ asset('storage/vacantes/' . $imagen) }}" alt="{{ 'Imagen Vacante' . $titulo }}">
+        </div>    
+
+        <div class="my-5 w-80">
+            @if ($imagen_nueva)
+                <x-input-label :value="__('Imagen Nueva')" />
+                <img src="{{ $imagen_nueva->temporaryUrl() }}" >
             @endif
         </div>
 
-        <x-input-error :messages="$errors->get('imagen')" class="mt-2" />
+        <x-input-error :messages="$errors->get('imagen_nueva')" class="mt-2" />
     </div>
 
-    <x-primary-button>{{ __('Crear Oportunidad') }}</x-primary-button>
+    <x-primary-button>{{ __('Guardar Cambios') }}</x-primary-button>
 </form>

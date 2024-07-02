@@ -34,8 +34,7 @@
         <div>
             <x-input-label for="movil" :value="__('Móvil')" />
             <x-text-input id="movil" name="movil" type="tel" class="mt-1 block w-full" :value="old('movil', $user->movil)" 
-                required autofocus autocomplete="movil" pattern="\+34 [0-9]{3} [0-9]{3} [0-9]{3}" 
-                placeholder="+34 123 456 789" />
+                required autofocus autocomplete="movil" />
             <x-input-error class="mt-2" :messages="$errors->get('movil')" />
         </div>
 

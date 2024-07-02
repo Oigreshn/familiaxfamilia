@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Vacante extends Model
 {
     use HasFactory;
+
+    protected $casts = ['ultimo_dia' => 'datetime'];
+
+    protected $fillable = [
+        'titulo',
+        'categoria',
+        'entidad',
+        'ultimo_dia',
+        'descripcion',
+        'imagen',
+        'user_id'
+    ];
 }
