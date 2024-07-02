@@ -12,7 +12,7 @@
                     <div class="max-w-xl">
                         @include('profile.partials.update-profile-information-form')
                         <div class="flex justify-end mt-4">
-                            <x-secondary-button x-on:click="step++">{{ __('Siguiente') }}</x-secondary-button>
+                            <x-secondary-button x-on:click="step = 2">{{ __('Siguiente') }}</x-secondary-button>
                         </div>
                     </div>
                 </div>
@@ -23,8 +23,8 @@
                     <div class="max-w-xl">
                         <livewire:habilidades/>
                         <div class="flex justify-between mt-4">
-                            <x-secondary-button x-on:click="step--">{{ __('Anterior') }}</x-secondary-button>
-                            <x-secondary-button x-on:click="step++">{{ __('Siguiente') }}</x-secondary-button>
+                            <x-secondary-button x-on:click="step = 1">{{ __('Anterior') }}</x-secondary-button>
+                            <x-secondary-button x-on:click="step = 3">{{ __('Siguiente') }}</x-secondary-button>
                         </div>
                     </div>
                 </div>
@@ -35,8 +35,8 @@
                     <div class="max-w-xl">
                         <livewire:talentos/>
                         <div class="flex justify-between mt-4">
-                            <x-secondary-button x-on:click="step--">{{ __('Anterior') }}</x-secondary-button>
-                            <x-secondary-button x-on:click="step++">{{ __('Siguiente') }}</x-secondary-button>
+                            <x-secondary-button x-on:click="step = 2">{{ __('Anterior') }}</x-secondary-button>
+                            <x-secondary-button x-on:click="step = 4">{{ __('Siguiente') }}</x-secondary-button>
                         </div>
                     </div>
                 </div>
@@ -47,8 +47,8 @@
                     <div class="max-w-xl">
                         <livewire:principios/>
                         <div class="flex justify-between mt-4">
-                            <x-secondary-button x-on:click="step--">{{ __('Anterior') }}</x-secondary-button>
-                            <x-secondary-button x-on:click="step++">{{ __('Siguiente') }}</x-secondary-button>
+                            <x-secondary-button x-on:click="step = 3">{{ __('Anterior') }}</x-secondary-button>
+                            <x-secondary-button x-on:click="step = 5">{{ __('Siguiente') }}</x-secondary-button>
                         </div>
                     </div>
                 </div>
@@ -57,10 +57,10 @@
             <template x-if="step === 5">
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     <div class="max-w-xl">
-                        @include('profile.partials.update-password-form')
+                        <livewire:avatar-generador/>
                         <div class="flex justify-between mt-4">
-                            <x-secondary-button x-on:click="step--">{{ __('Anterior') }}</x-secondary-button>
-                            <x-secondary-button x-on:click="step++">{{ __('Siguiente') }}</x-secondary-button>
+                            <x-secondary-button x-on:click="step = 4">{{ __('Anterior') }}</x-secondary-button>
+                            <x-secondary-button x-on:click="step = 6">{{ __('Siguiente') }}</x-secondary-button>
                         </div>
                     </div>
                 </div>
@@ -69,9 +69,21 @@
             <template x-if="step === 6">
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     <div class="max-w-xl">
+                        @include('profile.partials.update-password-form')
+                        <div class="flex justify-between mt-4">
+                            <x-secondary-button x-on:click="step = 5">{{ __('Anterior') }}</x-secondary-button>
+                            <x-secondary-button x-on:click="step = 7">{{ __('Siguiente') }}</x-secondary-button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <template x-if="step === 7">
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div class="max-w-xl">
                         @include('profile.partials.delete-user-form')
                         <div class="flex justify-between mt-4">
-                            <x-secondary-button x-on:click="step--">{{ __('Anterior') }}</x-secondarybutton>
+                            <x-secondary-button x-on:click="step = 6">{{ __('Anterior') }}</x-secondarybutton>
                             <x-secondary-button x-on:click="step = 1">{{ __('Volver al inicio') }}</x-secondary-button>
                         </div>
                     </div>
