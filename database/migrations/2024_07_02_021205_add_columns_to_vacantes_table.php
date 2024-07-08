@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('entidad');
             $table->date('ultimo_dia');
             $table->text('descripcion');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->integer('publicado')->default(1);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });

@@ -4,9 +4,21 @@ namespace App\Livewire;
 
 use App\Models\Vacante;
 use Livewire\Component;
+use Illuminate\Support\Facades\Storage;
 
 class MostrarVacantes extends Component
 {
+    protected $listeners = ['eliminarVacante'];
+   
+    public function eliminarVacante(Vacante $vacante)
+    {
+        if( $vacante->imagen ) {
+            Storage::delete('public/vacantes/' . $vacante->imagen);            
+        } 
+        
+        $vacante->delete();
+    }
+
     public function render()
     { 
         //Salimos a traer las vacantes segun el usuario logeado en ese momento
