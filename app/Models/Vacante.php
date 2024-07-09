@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Candidato;
+use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Vacante extends Model
 {
@@ -13,11 +15,21 @@ class Vacante extends Model
 
     protected $fillable = [
         'titulo',
-        'categoria',
+        'categoria_id',
         'entidad',
         'ultimo_dia',
         'descripcion',
         'imagen',
         'user_id'
     ];
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function candidatos()
+    {
+        return $this->hasMany(Candidato::class);
+    }
 }

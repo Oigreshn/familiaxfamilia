@@ -13,7 +13,7 @@ class VacantePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->rol === 2;
     }
 
     /**
@@ -21,16 +21,18 @@ class VacantePolicy
      */
     public function view(User $user, Vacante $vacante): bool
     {
-        //
+        // return $user->rol === 2;
     }
 
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    
+     public function create(User $user): bool
     {
-        //
+        return $user->rol === 2;
     }
+    
 
     /**
      * Determine whether the user can update the model.

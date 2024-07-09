@@ -24,7 +24,7 @@
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
-        <div>
+        <div> 
             <x-input-label for="direccion" :value="__('Dirección')" />
             <textarea id="direccion" name="direccion" class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500" 
                 required autofocus>{{ old('direccion', $user->direccion) }}</textarea>

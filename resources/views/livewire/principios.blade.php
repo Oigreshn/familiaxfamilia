@@ -14,7 +14,7 @@
         @method('patch')
 
          <!-- MUESTRA LOS PRINCIPIOS DE LAS TABLAS -->
-         <div>
+         <div class="md:grid md:grid-cols-2  bg-gray-50 p-4 my-10">
             @foreach ($principios as $principio)
             <div class="mt-4">
                 <label class="inline-flex items-center">

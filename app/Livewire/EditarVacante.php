@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Vacante;
 use Livewire\Component;
+use App\Models\Categoria;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
 
@@ -11,7 +12,7 @@ class EditarVacante extends Component
 {
     public $vacante_id;
     public $titulo;
-    public $categoria;
+    public $categoria_id;
     public $entidad;
     public $ultimo_dia;
     public $descripcion;
@@ -22,7 +23,7 @@ class EditarVacante extends Component
 
     protected $rules = [
         'titulo' => 'required|string',
-        'categoria' => 'required',
+        'categoria_id' => 'required',
         'entidad' => 'required',
         'ultimo_dia' => 'required',
         'descripcion' => 'required',
@@ -34,7 +35,7 @@ class EditarVacante extends Component
     {
         $this->vacante_id = $vacante->id;
         $this->titulo = $vacante->titulo;
-        $this->categoria = $vacante->categoria;
+        $this->categoria_id = $vacante->categoria_id;
         $this->entidad = $vacante->entidad;
         $this->ultimo_dia = Carbon::parse( $vacante->ultimo_dia )->format('Y-m-d');
         $this->descripcion = $vacante->descripcion;
@@ -56,7 +57,7 @@ class EditarVacante extends Component
 
         //Asignar los valores
         $vacante->titulo = $datos['titulo'];
-        $vacante->categoria = $datos['categoria'];
+        $vacante->categoria_id = $datos['categoria_id'];
         $vacante->entidad = $datos['entidad'];
         $vacante->ultimo_dia = $datos['ultimo_dia'];
         $vacante->descripcion = $datos['descripcion'];
@@ -72,6 +73,11 @@ class EditarVacante extends Component
 
     public function render()
     {
-        return view('livewire.editar-vacante');
+        //Consultar DB
+        $categorias = Categoria::all();
+        
+        return view('livewire.editar-vacante', [
+            'categorias' => $categorias
+        ]);
     }
 }

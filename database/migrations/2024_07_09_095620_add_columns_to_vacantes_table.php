@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('vacantes', function (Blueprint $table) {
             $table->string('titulo');
-            $table->string('categoria');
+            $table->foreignId('categoria_id')->constrained()->onDelete('cascade');
             $table->string('entidad');
             $table->date('ultimo_dia');
             $table->text('descripcion');
@@ -30,7 +30,8 @@ return new class extends Migration
     {
         Schema::table('vacantes', function (Blueprint $table) {
             $table->dropForeign('vacantes_user_id_foreign');
-            $table->dropColumn(['titulo', 'categoria', 'entidad', 'ultimo_dia', 'descripcion', 'imagen',
+            $table->dropForeign('vacantes_categoria_id_foreign');
+            $table->dropColumn(['titulo', 'entidad', 'ultimo_dia', 'descripcion', 'imagen',
             'publicado', 'user_id']);
         });
     }

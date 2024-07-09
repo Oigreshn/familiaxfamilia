@@ -13,15 +13,27 @@ class VacanteController extends Controller
      */
     public function index()
     {
-        return view('vacantes.index');
+        // $this->authorize('viewAny', Vacante::class);
+        
+        if (Gate::allows('viewAny', Vacante::class)){
+             return view('vacantes.index');
+        }
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Vacante $vacante)
     {
-        return view('vacantes.create');
+        // $this->authorize('create', Vacante::class);
+
+        if (Gate::allows('create', $vacante)){
+            return view('vacantes.create', [
+                'vacante' => $vacante
+            ]);
+        }else{
+            return redirect()->route('vacantes.index');
+        }
     }
 
     /**

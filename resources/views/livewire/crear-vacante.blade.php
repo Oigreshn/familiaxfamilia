@@ -16,19 +16,19 @@
 
      <!-- INGRESO CATEGORIA -->
      <div>
-        <x-input-label for="rol" :value="__('Categoria')" />
+        <x-input-label for="categoria_id" :value="__('Categoria')" />
         
-        <select wire:model="categoria" id="categoria" 
+        <select wire:model="categoria_id" id="categoria_id" 
         class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 
         rounded-md shadow-sm">               
 
-            <option value="">--Selecciona una Categoria--</option>
-            <option value="1">CATEGORIA 1</option>
-            <option value="2">CATEGORIA 2</option>
-            
+            <option >--Selecciona una Categoria--</option>
+            @foreach ($categorias as $categoria )
+                <option value="{{ $categoria->id }}"> {{ $categoria->descripcion }}</option>
+            @endforeach
         </select>
 
-        <x-input-error :messages="$errors->get('categoria')" class="mt-2" />
+        <x-input-error :messages="$errors->get('categoria_id')" class="mt-2" />
     </div>
 
     <!-- INGRESO DE ENTIDAD -->

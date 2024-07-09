@@ -4,12 +4,13 @@ namespace App\Livewire;
 
 use App\Models\Vacante;
 use Livewire\Component;
+use App\Models\Categoria;
 use Livewire\WithFileUploads;
 
 class CrearVacante extends Component
 {
     public $titulo;
-    public $categoria;
+    public $categoria_id;
     public $entidad;
     public $ultimo_dia;
     public $descripcion;
@@ -19,7 +20,7 @@ class CrearVacante extends Component
 
     protected $rules = [
         'titulo' => 'required|string',
-        'categoria' => 'required',
+        'categoria_id' => 'required',
         'entidad' => 'required',
         'ultimo_dia' => 'required',
         'descripcion' => 'required',
@@ -40,7 +41,7 @@ class CrearVacante extends Component
         //Crear la Vacante
         Vacante::create([
             'titulo' => $datos['titulo'],
-            'categoria' => $datos['categoria'],
+            'categoria_id' => $datos['categoria_id'],
             'entidad' => $datos['entidad'],
             'ultimo_dia' => $datos['ultimo_dia'],
             'descripcion' => $datos['descripcion'],
@@ -57,8 +58,11 @@ class CrearVacante extends Component
     public function render()
     {
         //Consultar DB
-        //$variables = Modelo::all();
+        $categorias = Categoria::all();
+        
         //Ver agenda
-        return view('livewire.crear-vacante');
+        return view('livewire.crear-vacante', [
+            'categorias' => $categorias
+        ]);
     }
 }

@@ -24,9 +24,8 @@
             rounded-md shadow-sm">               
 
                 <option value="">--Selecciona un rol--</option>
-                <option value="1">FAMILIA</option>
-                <option value="2">PERSONA</option>
-                <option value="3">ORGANIZACION</option>
+                <option value="1">PERSONA</option>
+                <option value="2">ORGANIZACION</option>
 
             </select>
 
