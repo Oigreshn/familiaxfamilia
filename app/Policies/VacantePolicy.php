@@ -13,7 +13,8 @@ class VacantePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->rol === 2;
+        return $user->rol === 1 || $user->rol === 2;
+
     }
 
     /**
@@ -21,7 +22,8 @@ class VacantePolicy
      */
     public function view(User $user, Vacante $vacante): bool
     {
-        // return $user->rol === 2;
+        return $user->rol === 1 || $user->rol === 2;
+
     }
 
     /**
@@ -30,7 +32,8 @@ class VacantePolicy
     
      public function create(User $user): bool
     {
-        return $user->rol === 2;
+        return $user->rol === 1 || $user->rol === 2;
+
     }
     
 
@@ -47,7 +50,7 @@ class VacantePolicy
      */
     public function delete(User $user, Vacante $vacante): bool
     {
-        //
+        return $user->id === $vacante->user_id;
     }
 
     /**

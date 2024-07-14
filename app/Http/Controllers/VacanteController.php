@@ -25,11 +25,9 @@ class VacanteController extends Controller
      */
     public function create(Vacante $vacante)
     {
-        // $this->authorize('create', Vacante::class);
-
         if (Gate::allows('create', $vacante)){
             return view('vacantes.create', [
-                'vacante' => $vacante
+                 'vacante' => $vacante
             ]);
         }else{
             return redirect()->route('vacantes.index');
@@ -45,14 +43,12 @@ class VacanteController extends Controller
             'vacante' => $vacante
         ]);
     }
-
+ 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Vacante $vacante)
     {   
-        //$this->authorize('update', $vacante);
-
         if (Gate::allows('update', $vacante)){
             return view('vacantes.edit', [
                 'vacante' => $vacante
@@ -61,10 +57,9 @@ class VacanteController extends Controller
             return redirect()->route('vacantes.index');
         }
         
-        
-        return view('vacantes.edit',[
-            'vacante' => $vacante
-        ]);
+        // return view('vacantes.edit',[
+        //     'vacante' => $vacante
+        // ]);
     }
 
 }
