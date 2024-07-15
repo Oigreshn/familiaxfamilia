@@ -32,7 +32,7 @@ class VacantePolicy
     
      public function create(User $user): bool
     {
-        return $user->rol === 1 || $user->rol === 2;
+       return $user->rol === 1 || $user->rol === 2;
 
     }
     
@@ -67,5 +67,10 @@ class VacantePolicy
     public function forceDelete(User $user, Vacante $vacante): bool
     {
         //
+    }
+
+    public function postular(User $user, Vacante $vacante)
+    {
+        return $user->id !== $vacante->user_id;
     }
 }

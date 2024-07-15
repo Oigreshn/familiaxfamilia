@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Candidato;
 use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Model;
@@ -30,6 +31,11 @@ class Vacante extends Model
 
     public function candidatos()
     {
-        return $this->hasMany(Candidato::class);
+        return $this->hasMany(Candidato::class)->orderBy('created_at','DESC');
+    }
+
+    public function reclutador()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
