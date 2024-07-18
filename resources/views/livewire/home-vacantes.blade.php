@@ -1,11 +1,14 @@
 <div>
+
+    <livewire:filtrar-vacantes/>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto">
             <h3 class="font-extrabold text-4xl text-gray-700 mb-12">
                 Nuestras Oportunidades Disponibles
             </h3>
 
-            <div class="big-white shadow-sm rounded-lg p-6 divide-y divide-gray-200">
+            <div class="bg-white shadow-sm rounded-lg p-6 divide-y divide-gray-200">
                 @forelse ($vacantes as $vacante )
                     <div class="md:flex md:justify-between md:items-center py-5">
                         <div class="md:flex-1">
@@ -14,6 +17,9 @@
                             </a>
                             <p class="text-base text-gray-600 mb-1">
                                 {{ $vacante->entidad}}
+                            </p>
+                            <p class="text-xs font-bold text-gray-600 mb-1">
+                                {{ $vacante->categoria->descripcion}}
                             </p>
                             <p class="font-bold text-xs text-gray-600">
                                 Último día para Postularse:
@@ -32,6 +38,11 @@
                     <p class="p-3 text-center text-sm text-gray-600">No hay Oportunidades aún</p>                    
                 @endforelse
             </div>
+
+            <div class="my-10">
+                {{ $vacantes->links('pagination::tailwind') }}
+            </div>
+            
         </div>
     </div>
 </div>

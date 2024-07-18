@@ -83,13 +83,28 @@
 
         <div class="my-5 w-80">
             @if ($imagen)
+                <p>Vista Previa de Imagen:</p>
+                <p>{{ $imagen->temporaryUrl() }}</p> <!-- Añade esta línea para ver la URL generada -->
+                <img src="{{ $imagen->temporaryUrl() }}" alt="Vista previa de la imagen">
+            @endif
+        </div>
+        {{-- <div class="my-5 w-80">
+            @if ($imagen)
                 Vista Previa de Imagen:
                 <img src="{{ $imagen->temporaryUrl() }}" >
             @endif
-        </div>
+        </div> --}}
 
         <x-input-error :messages="$errors->get('imagen')" class="mt-2" />
     </div>
 
-    <x-primary-button>{{ __('Crear Oportunidad') }}</x-primary-button>
+    <x-primary-button wire:loading.attr="disabled">{{ __('Crear Oportunidad') }}
+        <div 
+            wire:loading wire:target="crearVacante"
+            class="inline-block h-4 w-4 mr-1 animate-spin rounded-full border-4 border-solid 
+            border-current border-r-transparent align-[-0.125em] text-white 
+            motion-reduce:animate-[spin_1.5s_linear_infinite]" 
+            role="status">
+        </div>
+    </x-primary-button>
 </form>

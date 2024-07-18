@@ -27,6 +27,18 @@ class PostularVacante extends Component
     {
         $datos = $this->validate();
 
+        // Validar si la fecha de cierre ya pasó a partir de la columna ultimo_dia
+        if($this->vacante->ultimo_dia < now()) {
+            session()->flash('mensaje', 'La fecha de postulación para esta oportunidad ha expirado.');
+            return redirect()->back();
+        }
+
+        // validar que el usuario no haya postulado a la vacante anteriormente
+        if($this->vacante->candidatos()->where('user_id', auth()->user()->id)->count() > 0) {
+            session()->flash('mensaje', 'Ya enviaste tu postulación para esta vacante previamente.');
+            return redirect()->back();
+        } 
+
         //Almacenar CV en el Disco Duro
         if ($this->cv){
             $cv = $this->cv->store('public/cv');

@@ -17,7 +17,15 @@ class MostrarVacantes extends Component
             if( $vacante->imagen ) {
                 Storage::delete('public/vacantes/' . $vacante->imagen);            
             } 
-            
+
+            //Verifico si hay candidatos y los elimino con su cv en el servidor 
+            if( $vacante->candidatos->count() ) {
+                foreach( $vacante->candidatos as $candidato ) {
+                    if( $candidato->cv ) {
+                        Storage::delete('public/cv/' . $candidato->cv);
+                    }
+                }
+            }
             $vacante->delete();
         }
            

@@ -13,7 +13,15 @@
                 <x-input-error :messages="$errors->get('cv')" class="mt-2" />
             </div>
             
-            <x-primary-button>{{ __('Postularme') }}</x-primary-button>
+            <x-primary-button wire:loading.attr="disabled">{{ __('Postularme') }}
+                <div 
+                    wire:loading wire:target="postularme"
+                    class="inline-block h-4 w-4 mr-1 animate-spin rounded-full border-4 border-solid 
+                    border-current border-r-transparent align-[-0.125em] text-white 
+                    motion-reduce:animate-[spin_1.5s_linear_infinite]" 
+                    role="status">
+            </div>
+            </x-primary-button>
         </form>        
     @endif
 
