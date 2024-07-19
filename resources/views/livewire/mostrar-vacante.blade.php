@@ -29,7 +29,7 @@
 
         {{-- Zona de la Descripcion --}} 
         <div class="md:col-span-4">
-            <h2 class="text-2xl font-bold mb-5">Descripción de Oprtunidad:</h2>
+            <h2 class="text-2xl font-bold mb-5">Descripción de Oportunidad:</h2>
             <p>{{ $vacante->descripcion }}</p>
         </div>
     </div>
