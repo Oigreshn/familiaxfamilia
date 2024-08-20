@@ -35,6 +35,10 @@
                                         >
                                             Ver CV
                                         </a>
+                                        <a href="{{ route('mensajes.index', ['vacante' => $vacante->id, 'user_id' => $candidato->user->id]) }}"
+                                            class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
+                                            Contactar
+                                        </a>                             
                                     </div>
                                 </li>
                             @empty

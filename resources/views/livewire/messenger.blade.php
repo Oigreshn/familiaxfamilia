@@ -1,0 +1,119 @@
+<div>
+    <!-- Mostrar el nombre del usuario y la vacante -->
+    <div class="mb-5">
+        <h3 class="text-lg font-semibold">Contactando a: {{ $user->name }}</h3>
+        <p class="text-sm text-gray-600">Oportunidad: {{ $vacante->titulo }}</p>
+    </div>
+
+   <!-- Mostrar mensajes existentes -->
+   <div class="message-list space-y-4 mb-5 max-h-80 overflow-y-auto">
+    @forelse($messages as $message)
+        @if($message['sender_id'] == auth()->id())
+            <!-- Mensajes del usuario autenticado (Emisor) -->
+            <div class="flex justify-end">
+                <div class="bg-indigo-500 text-white p-4 rounded-lg max-w-xs shadow">
+                    <p>{{ $message['message'] }}</p>
+                    @if($message['archivo'])
+                        <!-- Mostrar ícono para el archivo adjunto -->
+                        <a href="{{ asset('storage/mensajes/' . $message['archivo']) }}" class="text-gray-800" target="_blank" rel="noopener noreferrer">
+                            Ver Archivo Adjunto
+                        </a>
+                    @endif
+                    <span class="text-xs text-gray-300">{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}</span>
+                </div>
+            </div>
+        @else
+            <!-- Mensajes del receptor -->
+            <div class="flex justify-start">
+                <div class="bg-gray-300 text-gray-800 p-4 rounded-lg max-w-xs shadow">
+                    <p>{{ $message['message'] }}</p>
+                    @if($message['archivo'])
+                        <!-- Mostrar ícono para el archivo adjunto -->
+                        <a href="{{ asset('storage/mensajes/' . $message['archivo']) }}" class="text-blue-600" target="_blank" rel="noopener noreferrer">
+                            Ver Archivo Adjunto
+                        </a>
+                    @endif
+                    <span class="text-xs text-gray-600">{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}</span>
+                </div>
+            </div>
+        @endif
+    @empty
+        <div class="p-4 bg-gray-100 rounded-lg">
+            <p class="text-gray-700">No tienes mensajes aún.</p>
+        </div>
+    @endforelse
+</div>
+
+<!-- Formulario de envío de mensajes -->
+<form wire:submit.prevent="sendMessage">
+    <div class="space-y-4">
+        <div class="relative">
+            <textarea 
+                wire:model.defer="message" 
+                id="message" 
+                class="w-full p-4 border-gray-300 rounded-t-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-800" 
+                rows="2" 
+                placeholder="Escribe un mensaje..."
+            ></textarea>
+            <x-input-error :messages="$errors->get('message')" class="mt-2" />
+        </div>
+
+        <!-- Botón para mostrar/ocultar emoji picker -->
+        <button 
+            type="button" 
+            id="emoji-toggle" 
+            class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg text-xs font-bold uppercase mt-2">
+            😊 Emoji
+        </button>
+
+        <!-- Emoji Picker -->
+        <div id="emoji-picker-container" class="hidden mt-2" >
+            <emoji-picker class="h-64 w-full border rounded-lg"></emoji-picker>
+        </div>
+
+        <!-- Campo para adjuntar archivo -->
+        <div>
+            <label for="archivo" class="block text-sm font-medium text-gray-700">Adjuntar archivo (PDF)</label>
+            <input 
+                type="file" 
+                wire:model="archivo" 
+                id="archivo" 
+                class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-800 focus:border-blue-800"
+                accept=".pdf"
+            />
+        </div>
+
+        <div class="flex justify-end">
+            <x-primary-button wire:loading.attr="disabled">{{ __('Enviar Mensaje') }}
+                <div 
+                    wire:loading wire:target="sendMessage"
+                    class="inline-block h-4 w-4 mr-1 animate-spin rounded-full border-4 border-solid 
+                    border-current border-r-transparent align-[-0.125em] text-white 
+                    motion-reduce:animate-[spin_1.5s_linear_infinite]" 
+                    role="status">
+                </div>
+            </x-primary-button>
+        </div>
+    </div>
+</form>
+</div>
+
+<!-- Script para manejar el Emoji Picker -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const emojiToggle = document.getElementById('emoji-toggle');
+    const emojiPickerContainer = document.getElementById('emoji-picker-container');
+    const messageInput = document.getElementById('message');
+
+    // Mostrar y ocultar el Emoji Picker
+    emojiToggle.addEventListener('click', function () {
+        emojiPickerContainer.classList.toggle('hidden');
+    });
+
+    // Escuchar el evento cuando se selecciona un emoji
+    emojiPickerContainer.addEventListener('emoji-click', function (event) {
+        const emoji = event.detail.unicode;
+        messageInput.value += emoji;
+    });
+});
+</script>

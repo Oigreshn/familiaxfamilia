@@ -1,32 +1,47 @@
 <div>
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        @forelse ($vacantes as $vacante )
-            <div class="p-6 bg-white border-b border-gray-200 md:flex md:justify-between md:items-center">
-                <div class="space-y-3">
-                    <a href="{{ route('vacantes.show', $vacante->id) }}" class="text-xl font-bold">
-                        {{ $vacante->titulo }}
-                    </a>
-                    <p class="text-sm text-gray-600 font-bold">
-                        {{ $vacante->entidad }}
-                    </p>
-                    <p class="text-sm text-gray-500">
-                        Último dia: {{ $vacante->ultimo_dia->format('d/m/Y') }}
-                    </p>
-                </div>
 
-                <div class="flex flex-col md:flex-row items-stretch gap-3 mt-5 md:mt-0">
-                    <a href="{{ route('candidatos.index', $vacante) }}" class="bg-slate-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
-                        {{ $vacante->candidatos->count() }} Candidatos
-                    </a>
-                    <a href=" {{ route('vacantes.edit', $vacante->id) }}" class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
-                        Editar
-                    </a>
-                    <button wire:click="$dispatch('mostrarAlerta', { vacante: {{$vacante->id}} })"
-                        class="bg-red-600 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
-                        Eliminar
-                    </button>
+        @forelse ($vacantes as $vacante )
+            <!-- Contenedor de la Vacante con Separador -->
+            <div class="border-b border-gray-300 last:border-none">
+                <div class="p-6 bg-white flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                    <!-- Detalles de la Vacante -->
+                    <div class="flex-1 space-y-3">
+                        <a href="{{ route('vacantes.show', $vacante->id) }}" class="text-2xl font-semibold text-gray-800">
+                            {{ $vacante->titulo }}
+                        </a>
+                        <p class="text-md text-gray-700 font-bold">
+                            Impartido por {{ $vacante->entidad }}
+                        </p>
+                        <p class="text-sm text-gray-600">
+                            Último día: {{ $vacante->ultimo_dia->format('d/m/Y') }}
+                        </p>
+
+                        <!-- Botones de Acción -->
+                        <div class="flex flex-col md:flex-row items-stretch gap-3">
+                            <a href="{{ route('candidatos.index', $vacante) }}" class="bg-slate-700 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
+                                {{ $vacante->candidatos->count() }} Candidatos
+                            </a>
+                            <a href="{{ route('vacantes.edit', $vacante->id) }}" class="bg-amber-500 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
+                                Editar
+                            </a>
+                            <button wire:click="$dispatch('mostrarAlerta', { vacante: {{$vacante->id}} })"
+                                class="bg-red-500 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
+                                Eliminar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Imagen de la Vacante -->
+                    <div class="w-full md:w-auto md:ml-6">
+                        <img 
+                            src="{{ $vacante->imagen ? asset('storage/vacantes/' . $vacante->imagen) : asset('images/default-vacante.jpg') }}" 
+                            alt="{{ 'Imagen vacante ' . $vacante->titulo }}" 
+                            class="w-full h-48 md:h-64 object-cover rounded-lg"
+                        >
+                    </div>
                 </div>
-            </div>        
+            </div>
         @empty
             <p class="p-3 text-center text-sm text-gray-600">
                 No hay Oportunidades que mostrar.

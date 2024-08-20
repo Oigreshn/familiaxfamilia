@@ -38,4 +38,9 @@ class Vacante extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function mensajes()
+    {
+        return $this->hasMany(Mensaje::class, 'vacante_id');
+    }
 }

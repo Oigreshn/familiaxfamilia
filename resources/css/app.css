@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* resources/css/app.css */
+
+/* Aplicar Museo a los encabezados */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Museo', sans-serif;
+}
+
+/* Aplicar Nexa al resto del texto */
+body, p, label, button, textarea {
+    font-family: 'Nexa', sans-serif;
+}
+

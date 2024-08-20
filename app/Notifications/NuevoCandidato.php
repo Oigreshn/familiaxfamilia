@@ -46,7 +46,7 @@ class NuevoCandidato extends Notification
     }
 
     /**
-     * Get the array representation of the notification.
+     * Get the array representation of the notification.S
      *
      * @return array<string, mixed>
      */
@@ -55,9 +55,9 @@ class NuevoCandidato extends Notification
     public function toDatabase( $notifiable)
     {
         return [
-             'id_vacante' => $this->id_vacante,
-             'nombre_vacante' => $this->nombre_vacante,
-             'usuario_id' => $this->usuario_id
-        ];
+            'id_vacante' => $this->id_vacante,
+            'nombre_vacante' => $this->nombre_vacante,
+            'usuario_id' => $this->usuario_id
+       ];
     } 
 }

@@ -1,11 +1,14 @@
 <?php
 
-use App\Http\Controllers\CandidatoController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VacanteController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CandidatoController;
+use App\Http\Controllers\MessengerController;
+use App\Http\Controllers\ConversacionController;
+use App\Http\Controllers\NotificacionController;
+use App\Http\Controllers\MensajeNotificacionController;
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -19,6 +22,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+//Mensajes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/mensajes/{vacante}/{user_id}', [MessengerController::class, 'index'])->name('mensajes.index');
+    Route::get('/notificaciones-mensajes', MensajeNotificacionController::class)->name('notificaciones.mensajes');
+    Route::get('/mensaje/{mensaje_id}', [MessengerController::class, 'show'])->name('mensajes.show');
+    Route::get('/conversaciones', [ConversacionController::class, 'index'])->name('conversaciones.index');
 });
 
 //Notificaciones

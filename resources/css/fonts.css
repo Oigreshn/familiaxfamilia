@@ -1,0 +1,15 @@
+/* resources/css/fonts.css */
+
+@font-face {
+    font-family: 'Museo';
+    src: url('../fonts/Museo700-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nexa';
+    src: url('../fonts/Nexa Light_0.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
