@@ -38,6 +38,9 @@
             </main>
         </div>
 
+        <!-- Invocando el Footer -->
+        @include('layouts.footer')
+
         @livewireScripts
         @stack('scripts')
     </body>

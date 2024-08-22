@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Livewire\Talentos;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,5 +47,20 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function habilidades()
+    {
+        return $this->belongsToMany(Habilidad::class, 'habilidad_user')->withTimestamps();
+    }
+
+    public function talentos()
+    {
+        return $this->belongsToMany(Talento::class, 'talento_user')->withTimestamps();
+    }
+
+    public function principios()
+    {
+        return $this->belongsToMany(Principio::class, 'principio_user')->withTimestamps();
     }
 }

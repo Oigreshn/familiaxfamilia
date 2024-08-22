@@ -1,13 +1,15 @@
-<section class="space-y-6">
-    <header>
-        <h2 class="text-2xl font-bold text-center underline">
-            {{ __('Darse de Baja') }}
+<section class="max-w-md mx-auto">
+    <header class="text-center mb-5">
+        <div class="flex justify-center items-center mb-4">
+            <img src="{{ asset('images/darsedebaja.png') }}" alt="Icono Darse de Baja" class="h-16 w-16">
+        </div>
+        <h2 class="text-2xl font-bold underline">
+            {{ __('DARSE DE BAJA') }}
         </h2>
-
-        <p class="text-1xl font-semibold text-justify">
-            {{ __('Una vez eliminada su cuenta, todos sus recursos y datos se eliminarán de forma permanente. 
-                    Antes de proceder, descargue cualquier dato o información que desee conservar.
-') }}
+        <p class="text-center text-md font-semibold">
+            {{ __('Una vez eliminada su cuenta, todos sus recursos y datos se eliminarán de 
+            forma permanente. Antes de proceder, descargue cualquier dato o información que desee conservar.
+            ') }}
         </p>
     </header>
 
