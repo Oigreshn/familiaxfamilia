@@ -18,7 +18,7 @@
 
         <!-- Colocar la imagen justo después del encabezado en pantallas pequeñas -->
         <div class="block md:hidden w-full justify-center mt-4">
-            <img src="{{ asset('images/fondotalentos.png') }}" alt="Imagen Principios" 
+            <img src="{{ asset('images/fondoprincipios.png') }}" alt="Imagen Principios" 
                  class="w-full h-auto object-cover rounded-lg shadow-lg">
         </div>
 
@@ -58,7 +58,7 @@
     </div>
     <!-- Contenedor de la imagen, visible al lado derecho en pantallas medianas y grandes -->
     <div class="hidden md:flex md:w-1/3 lg:w-1/4 items-center justify-center">
-        <img src="{{ asset('images/fondotalentos.png') }}" alt="Imagen Principios" 
+        <img src="{{ asset('images/fondoprincipios.png') }}" alt="Imagen Principios" 
              class="md:max-h-[600px] lg:max-h-[650px] w-auto object-contain rounded-lg shadow-lg">
     </div>
 </section>
