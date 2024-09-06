@@ -1,30 +1,40 @@
 <div class="p-10">
-    <div class="mb-5">
-        <h3 class="font-bold text-3xl text-gray-800 my-3">
+    <div class="mb-5 flex items-center justify-between">
+        <!-- Título de la Oportunidad -->
+        <h3 class="font-bold text-3xl text-gray-800 my-3 flex items-center">
             {{ $vacante->titulo }}
+
+            <!-- Enlace para Compartir -->
+            <a href="#" onclick="compartirOportunidad(event)" class="ml-3 text-amber-500 hover:text-blue-600">
+                <!-- Icono SVG de compartir -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10 w-9 h-9">
+                    <path fill-rule="evenodd" d="M15.75 4.5a3 3 0 1 1 .825 2.066l-8.421 4.679a3.002 3.002 0 0 1 0 1.51l8.421 4.679a3 3 0 1 1-.729 1.31l-8.421-4.678a3 3 0 1 1 0-4.132l8.421-4.679a3 3 0 0 1-.096-.755Z" clip-rule="evenodd" />
+                </svg>
+            </a>
         </h3>
 
-        <div class="md:grid md:grid-cols-2 bg-gray-50 p-4 my-10">
-            <p class="font-bold text-sm uppercase text-gray-800 my-3">Empresa:
-                <span class="normal-case font-normal">{{ $vacante->entidad }}</span>
-            </p>
+        <!-- Otras secciones de información -->
+    </div>
 
-            <p class="font-bold text-sm uppercase text-gray-800 my-3">Último día para postularse:
-                <span class="normal-case font-normal">{{ $vacante->ultimo_dia->toFormattedDateString() }}</span>
-            </p>
+    <div class="md:grid md:grid-cols-2 bg-gray-50 p-4 my-10">
+        <p class="font-bold text-sm uppercase text-gray-800 my-3">Empresa:
+            <span class="normal-case font-normal">{{ $vacante->entidad }}</span>
+        </p>
 
-            <p class="font-bold text-sm uppercase text-gray-800 my-3">Categoría:
-                <span class="normal-case font-normal">{{ $vacante->categoria->descripcion }}</span>
-            </p>
-        </div>
+        <p class="font-bold text-sm uppercase text-gray-800 my-3">Último día para postularse:
+            <span class="normal-case font-normal">{{ $vacante->ultimo_dia->toFormattedDateString() }}</span>
+        </p>
 
+        <p class="font-bold text-sm uppercase text-gray-800 my-3">Categoría:
+            <span class="normal-case font-normal">{{ $vacante->categoria->descripcion }}</span>
+        </p>
     </div>
 
     {{-- Zona de la Imagen y la Descripcion --}}
     <div class="md:grid md:grid-cols-6 gap-4">
         {{-- Zona de la Imagen --}}
         <div class="md:col-span-2">
-            <img class="rounded-lg" src="{{ asset('storage/vacantes/' . $vacante->imagen) }}" alt="{{'Imagen vacante ' . $vacante->titulo}}">
+            <img class="rounded-lg" src="{{ asset('storage/vacantes/' . $vacante->imagen) }}" alt="{{'Imagen Oportunidad ' . $vacante->titulo}}">
         </div>
 
         {{-- Zona de la Descripcion --}} 
@@ -47,5 +57,28 @@
     @can('postular', $vacante)
         <livewire:postular-vacante :vacante="$vacante" />
     @endcan
-    
+
 </div>
+
+<script>
+    function compartirOportunidad(event) {
+        event.preventDefault();
+        
+        // URL a compartir (modifica según sea necesario)
+        const url = window.location.href;
+        const text = encodeURIComponent('¡Mira esta oportunidad en ' + url + '!');
+
+        // Genera el enlace de compartir usando la API de Web Share si está disponible
+        if (navigator.share) {
+            navigator.share({
+                title: document.title,
+                text: text,
+                url: url,
+            }).then(() => console.log('Compartido exitosamente'))
+            .catch((error) => console.error('Error al compartir:', error));
+        } else {
+            // Fallback para navegadores que no soportan la API de Web Share
+            alert('La función de compartir no es compatible con este navegador.');
+        }
+    }
+</script>

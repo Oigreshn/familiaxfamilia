@@ -115,15 +115,33 @@
                 @endauth
                 
                 @guest
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('funcionamiento')">
+                            {{ __('¿Como Funciona?') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('cambiarlascosas')">
+                            {{ __('El Cambio') }}
+                        </x-nav-link>
+                    
+                        <x-nav-link :href="route('amasfamilias')">
+                            {{ __('A+Familias') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('seccionpersonas')">
+                            {{ __('Personas') }}
+                        </x-nav-link>
+                    </div>
+                    
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('login')">
                             {{ __('Iniciar Sesión') }}
                         </x-nav-link>
                 
-                        <x-nav-link :href="route('register')">
+                        {{-- <x-nav-link :href="route('register')">
                             {{ __('Crear Cuenta') }}
-                        </x-nav-link>
+                        </x-nav-link> --}}
                     </div>
                 @endguest
             </div>
@@ -252,9 +270,9 @@
                 <x-responsive-nav-link :href="route('login')">
                     {{ __('Iniciar Sesión') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('register')">
+                {{-- <x-responsive-nav-link :href="route('register')">
                     {{ __('Crear Cuenta') }}
-                </x-responsive-nav-link>
+                </x-responsive-nav-link> --}}
             </div>
         @endguest
     </div>

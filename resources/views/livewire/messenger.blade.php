@@ -6,43 +6,43 @@
     </div>
 
    <!-- Mostrar mensajes existentes -->
-   <div class="message-list space-y-4 mb-5 max-h-80 overflow-y-auto">
-    @forelse($messages as $message)
-        @if($message['sender_id'] == auth()->id())
-            <!-- Mensajes del usuario autenticado (Emisor) -->
-            <div class="flex justify-end">
-                <div class="bg-indigo-500 text-white p-4 rounded-lg max-w-xs shadow">
-                    <p>{{ $message['message'] }}</p>
-                    @if($message['archivo'])
-                        <!-- Mostrar ícono para el archivo adjunto -->
-                        <a href="{{ asset('storage/mensajes/' . $message['archivo']) }}" class="text-gray-800" target="_blank" rel="noopener noreferrer">
-                            Ver Archivo Adjunto
-                        </a>
-                    @endif
-                    <span class="text-xs text-gray-300">{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}</span>
+   <div id="message-list" class="message-list space-y-4 mb-5 max-h-80 overflow-y-auto">
+        @forelse($messages as $message)
+            @if($message['sender_id'] == auth()->id())
+                <!-- Mensajes del usuario autenticado (Emisor) -->
+                <div class="flex justify-end">
+                    <div class="bg-indigo-500 text-white p-4 rounded-lg max-w-xs shadow">
+                        <p>{{ $message['message'] }}</p>
+                        @if($message['archivo'])
+                            <!-- Mostrar ícono para el archivo adjunto -->
+                            <a href="{{ asset('storage/mensajes/' . $message['archivo']) }}" class="text-gray-800" target="_blank" rel="noopener noreferrer">
+                                Ver Archivo Adjunto
+                            </a>
+                        @endif
+                        <span class="text-xs text-gray-300">{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}</span>
+                    </div>
                 </div>
-            </div>
-        @else
-            <!-- Mensajes del receptor -->
-            <div class="flex justify-start">
-                <div class="bg-gray-300 text-gray-800 p-4 rounded-lg max-w-xs shadow">
-                    <p>{{ $message['message'] }}</p>
-                    @if($message['archivo'])
-                        <!-- Mostrar ícono para el archivo adjunto -->
-                        <a href="{{ asset('storage/mensajes/' . $message['archivo']) }}" class="text-blue-600" target="_blank" rel="noopener noreferrer">
-                            Ver Archivo Adjunto
-                        </a>
-                    @endif
-                    <span class="text-xs text-gray-600">{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}</span>
+            @else
+                <!-- Mensajes del receptor -->
+                <div class="flex justify-start">
+                    <div class="bg-gray-300 text-gray-800 p-4 rounded-lg max-w-xs shadow">
+                        <p>{{ $message['message'] }}</p>
+                        @if($message['archivo'])
+                            <!-- Mostrar ícono para el archivo adjunto -->
+                            <a href="{{ asset('storage/mensajes/' . $message['archivo']) }}" class="text-blue-600" target="_blank" rel="noopener noreferrer">
+                                Ver Archivo Adjunto
+                            </a>
+                        @endif
+                        <span class="text-xs text-gray-600">{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}</span>
+                    </div>
                 </div>
+            @endif
+        @empty
+            <div class="p-4 bg-gray-100 rounded-lg">
+                <p class="text-gray-700">No tienes mensajes aún.</p>
             </div>
-        @endif
-    @empty
-        <div class="p-4 bg-gray-100 rounded-lg">
-            <p class="text-gray-700">No tienes mensajes aún.</p>
-        </div>
-    @endforelse
-</div>
+        @endforelse
+    </div>
 
 <!-- Formulario de envío de mensajes -->
 <form wire:submit.prevent="sendMessage">
@@ -83,8 +83,10 @@
             />
         </div>
 
-        <div class="flex justify-end">
-            <x-primary-button wire:loading.attr="disabled">{{ __('Enviar Mensaje') }}
+        <div class="flex justify-end space-x-2">
+            <!-- Botón para enviar mensaje -->
+            <x-primary-button wire:loading.attr="disabled">
+                Enviar Mensaje
                 <div 
                     wire:loading wire:target="sendMessage"
                     class="inline-block h-4 w-4 mr-1 animate-spin rounded-full border-4 border-solid 
@@ -100,20 +102,36 @@
 
 <!-- Script para manejar el Emoji Picker -->
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const emojiToggle = document.getElementById('emoji-toggle');
-    const emojiPickerContainer = document.getElementById('emoji-picker-container');
-    const messageInput = document.getElementById('message');
+    document.addEventListener('DOMContentLoaded', function () {
+        const emojiToggle = document.getElementById('emoji-toggle');
+        const emojiPickerContainer = document.getElementById('emoji-picker-container');
+        const messageInput = document.getElementById('message');
 
-    // Mostrar y ocultar el Emoji Picker
-    emojiToggle.addEventListener('click', function () {
-        emojiPickerContainer.classList.toggle('hidden');
-    });
+        // Mostrar y ocultar el Emoji Picker
+        emojiToggle.addEventListener('click', function () {
+            emojiPickerContainer.classList.toggle('hidden');
+        });
 
-    // Escuchar el evento cuando se selecciona un emoji
-    emojiPickerContainer.addEventListener('emoji-click', function (event) {
-        const emoji = event.detail.unicode;
-        messageInput.value += emoji;
+        // Escuchar el evento cuando se selecciona un emoji
+        emojiPickerContainer.addEventListener('emoji-click', function (event) {
+            const emoji = event.detail.unicode;
+            messageInput.value += emoji;
+            @this.set('message', messageInput.value);
+        });
+
+        // Escuchar el evento de Livewire para hacer scroll al final
+        window.addEventListener('scrollToBottom', function () {
+            const messageList = document.querySelector('.message-list');
+            messageList.scrollTop = messageList.scrollHeight;
+        });
+
+        // Escuchar el evento de Livewire para limpiar el textarea
+        window.addEventListener('limpiarTextarea', function () {
+            borrartxt(); // Llama a la función borrartxt
+        });
     });
-});
-</script>
+    // Función para limpiar el textarea
+    function borrartxt() {
+        document.getElementById('message').value = ''; // Limpia el valor del textarea
+    }
+</script>    

@@ -43,7 +43,7 @@ class Messenger extends Component
                              })
                              ->orderBy('created_at', 'asc')
                              ->get()
-                             ->toArray(); // Convertimos los mensajes a un array                                
+                             ->toArray(); // Convertimos los mensajes a un array  
     }
 
     public function sendMessage()
@@ -75,9 +75,20 @@ class Messenger extends Component
         // Recargar los mensajes
         $this->loadMessages();
 
-        // Limpiar los campos
-        $this->reset('message', 'archivo');
+        // Desplazarse al final de la lista de mensajes después de enviar
+        $this->dispatch('scrollToBottom');
 
+        // Enviar un evento al frontend para limpiar el textarea
+        $this->dispatch('limpiarTextarea');
+
+        // Limpiar los campos en el backend
+        $this->reset('message', 'archivo');
+    }
+
+    public function clearFields()
+    {
+        // Limpiar los campos de entrada
+        $this->reset('message', 'archivo');
     }
 
     public function render()

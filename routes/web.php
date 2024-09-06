@@ -11,6 +11,10 @@ use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\MensajeNotificacionController;
 
 Route::get('/', HomeController::class)->name('home');
+Route::get('/funcionamiento', [HomeController::class, 'funcionamiento'])->name('funcionamiento');
+Route::get('/cambiarlascosas', [HomeController::class, 'cambiarlascosas'])->name('cambiarlascosas');
+Route::get('/amasfamilias', [HomeController::class, 'amasfamilias'])->name('amasfamilias');
+Route::get('/personas', [HomeController::class, 'personas'])->name('seccionpersonas');
 
 Route::get('/dashboard', [VacanteController::class, 'index'])->middleware(['auth', 'verified'])->name('vacantes.index');
 Route::get('/oportunidad/create', [VacanteController::class, 'create'])->middleware(['auth', 'verified'])->name('vacantes.create');

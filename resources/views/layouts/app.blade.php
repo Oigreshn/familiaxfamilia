@@ -13,7 +13,10 @@
         {{-- <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> --}}
-
+        
+        <!-- Avataaars Styles -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/avataaars/1.2.0/avataaars.min.css" rel="stylesheet">
+        
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
@@ -40,6 +43,9 @@
 
         <!-- Invocando el Footer -->
         @include('layouts.footer')
+
+        <!-- Avataaars Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/avataaars/1.2.0/avataaars.min.js"></script>
 
         @livewireScripts
         @stack('scripts')
