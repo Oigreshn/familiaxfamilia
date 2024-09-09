@@ -267,9 +267,26 @@
 
         @guest
             <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('funcionamiento')">
+                    {{ __('¿Como Funciona?') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('cambiarlascosas')">
+                    {{ __('El Cambio') }}
+                </x-responsive-nav-link>
+            
+                <x-responsive-nav-link :href="route('amasfamilias')">
+                    {{ __('A+Familias') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('seccionpersonas')">
+                    {{ __('Personas') }}
+                </x-responsive-nav-link>
+
                 <x-responsive-nav-link :href="route('login')">
                     {{ __('Iniciar Sesión') }}
                 </x-responsive-nav-link>
+                
                 {{-- <x-responsive-nav-link :href="route('register')">
                     {{ __('Crear Cuenta') }}
                 </x-responsive-nav-link> --}}
