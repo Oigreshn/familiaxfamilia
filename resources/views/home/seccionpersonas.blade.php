@@ -52,37 +52,34 @@
                 <div class="relative flex justify-center items-center bg-cover bg-center"
                     style="background-image: url('{{ asset('images/base1.png') }}'); height: 50vh;">
                     <!-- Contenedor Blanco Cuadrado -->
-                    <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-3/4 h-3/4 mx-auto my-auto">
-                        <div class="text-6xl font-bold text-white absolute top-4 left-4">1.</div>
-                        <div class="text-center p-4">
-                            <p class="text-white font-bold">REGÍSTRATE Y CUÉNTANOS QUÉ TE GUSTA HACER Y CUÁLES SON TUS HABILIDADES</p>
+                    <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-11/12 sm:w-3/4 h-11/12 sm:h-3/4 mx-auto my-auto">
+                        <div class="text-4xl sm:text-6xl font-bold text-white absolute top-2 sm:top-4 left-2 sm:left-4">1.</div>
+                        <div class="text-center p-2 sm:p-4">
+                            <p class="text-white text-sm sm:text-base font-bold">REGÍSTRATE Y CUÉNTANOS QUÉ TE GUSTA HACER Y CUÁLES SON TUS HABILIDADES</p>
                         </div>
                     </div>
                 </div>
-        
+                
                 <!-- Bloque 2 -->
                 <div class="relative flex justify-center items-center bg-cover bg-center"
                     style="background-image: url('{{ asset('images/base2.png') }}'); height: 50vh;">
                     <!-- Contenedor Blanco Cuadrado -->
-                    <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-3/4 h-3/4 mx-auto my-auto">
-                        <div class="text-6xl font-bold text-white absolute top-4 left-4">2.</div>
-                        <div class="text-center p-4">
-                            <p class="text-white font-bold">EXPLORA ENTRE TODAS LAS OPORTUNIDADES Y EVALÚA CUÁL ENCAJA MEJOR CON TUS CAPACIDADES. TIENES MUCHO QUE OFRECER SI PUNTÚAS Y OBSERVAS TUS FORTALEZAS.</p>
+                    <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-11/12 sm:w-3/4 h-11/12 sm:h-3/4 mx-auto my-auto">
+                        <div class="text-4xl sm:text-6xl font-bold text-white absolute top-2 sm:top-4 left-2 sm:left-4">2.</div>
+                        <div class="text-center p-2 sm:p-4">
+                            <p class="text-white text-sm sm:text-base font-bold">EXPLORA ENTRE TODAS LAS OPORTUNIDADES Y EVALÚA CUÁL ENCAJA MEJOR CON TUS CAPACIDADES. TIENES MUCHO QUE OFRECER SI PUNTÚAS Y OBSERVAS TUS FORTALEZAS.</p>
                         </div>
                     </div>
                 </div>
-
+        
                 <!-- Bloque 3 -->
                 <div class="relative flex justify-center items-center bg-cover bg-center"
                     style="background-image: url('{{ asset('images/base3.png') }}'); height: 50vh;">
                     <!-- Contenedor Blanco Cuadrado -->
-                    <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-3/4 h-3/4 mx-auto my-auto">
-                        <div class="text-6xl font-bold text-white absolute top-4 left-4">3.</div>
-                        <div class="text-center p-4">
-                            <p class="text-white font-bold">
-                                LA OPORTUNIDAD ESTÁ AHÍ. ENVÍA UN MENSAJE A LA ORGANIZACIÓN DEL TERCER SECTOR, FAMILIA O PERSONA
-                                QUE PUBLICÓ LA OPORTUNIDAD Y PROGRAMA TU PARTICIPACIÓN CON ELLOS.
-                            </p>
+                    <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-11/12 sm:w-3/4 h-11/12 sm:h-3/4 mx-auto my-auto">
+                        <div class="text-4xl sm:text-6xl font-bold text-white absolute top-2 sm:top-4 left-2 sm:left-4">3.</div>
+                        <div class="text-center p-2 sm:p-4">
+                            <p class="text-white text-sm sm:text-base font-bold">LA OPORTUNIDAD ESTÁ AHÍ. ENVÍA UN MENSAJE A LA ORGANIZACIÓN DEL TERCER SECTOR, FAMILIA O PERSONA QUE PUBLICÓ LA OPORTUNIDAD Y PROGRAMA TU PARTICIPACIÓN CON ELLOS.</p>
                         </div>
                     </div>
                 </div>
@@ -91,18 +88,16 @@
                 <div class="relative flex justify-center items-center bg-cover bg-center"
                     style="background-image: url('{{ asset('images/base4.png') }}'); height: 50vh;">
                     <!-- Contenedor Blanco Cuadrado -->
-                    <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-3/4 h-3/4 mx-auto my-auto">
-                        <div class="text-6xl font-bold text-white absolute top-4 left-4">4.</div>
-                        <div class="text-center p-4">
-                            <p class="text-white font-bold">
-                               ¡LISTO! FORMALIZA EL ENCUENTRO, OFRECE TODO LO QUE PUEDAS APORTAR, RECIBE TU MONEDA SOCIAL Y 
-                               UTILÍZALA EN LOS DIFERENTES APOYOS QUE OFRECEMOS.
-                            </p>
+                    <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-11/12 sm:w-3/4 h-11/12 sm:h-3/4 mx-auto my-auto">
+                        <div class="text-4xl sm:text-6xl font-bold text-white absolute top-2 sm:top-4 left-2 sm:left-4">4.</div>
+                        <div class="text-center p-2 sm:p-4">
+                            <p class="text-white text-sm sm:text-base font-bold">¡LISTO! FORMALIZA EL ENCUENTRO, OFRECE TODO LO QUE PUEDAS APORTAR, RECIBE TU MONEDA SOCIAL Y UTILÍZALA EN LOS DIFERENTES APOYOS QUE OFRECEMOS.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>        
+        
         {{-- Fin de Bloques --}}
     </div>
 </x-app-layout>
