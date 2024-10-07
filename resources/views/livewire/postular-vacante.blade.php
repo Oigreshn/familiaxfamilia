@@ -8,13 +8,13 @@
     @else
         <form wire:submit.prevent='postularme' class="w-full max-w-md mt-5">
             <div class="mb-4">
-                <x-input-label for="cv" :value="__('Curriculum u Hoja de Vida (PDF)')" />
+                <x-input-label for="cv" :value="__('Comparte Tu Experiencia (PDF)')" />
                 <x-text-input id="cv" type="file" wire:model="cv" accept=".pdf" class="block mt-1 w-full" />
                 <x-input-error :messages="$errors->get('cv')" class="mt-2" />
             </div>
             
             <x-primary-button wire:loading.attr="disabled" class="w-ful text-center">
-                {{ __('Postularme') }}
+                {{ __('Enviar Mi Experencia') }}
                 <div 
                     wire:loading wire:target="postularme"
                     class="inline-block h-4 w-4 mr-1 animate-spin rounded-full border-4 border-solid 

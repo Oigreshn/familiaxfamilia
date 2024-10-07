@@ -14,6 +14,14 @@ class Habilidades extends Component
     {
         // Al iniciar el componente, cargamos las habilidades seleccionadas por el usuario
         $this->selectedHabilidades = Auth::user()->habilidades->pluck('id')->toArray();
+    }           
+
+    public function updatedSelectedHabilidades()
+    {
+        // Verificar si el usuario selecciona más de 2 habilidades
+        if (count($this->selectedHabilidades) > 2) {
+            array_pop($this->selectedHabilidades); // Quitar la habilidad seleccionada en exceso
+        }
     }
 
     public function actualizarHabilidades()
@@ -21,10 +29,10 @@ class Habilidades extends Component
         // Sincronizar las habilidades seleccionadas con la tabla pivote
         Auth::user()->habilidades()->sync($this->selectedHabilidades);
 
-        // Mostrar un mensaje de éxito
-        session()->flash('status', 'Habilidades Actualizadas Exitosamente.');
+        // Disparar evento para mostrar una alerta de éxito
+        $this->dispatch('habilidadesActualizadas'); 
     }
-    
+
     public function render()
     {
         $habilidades = Habilidad::all();

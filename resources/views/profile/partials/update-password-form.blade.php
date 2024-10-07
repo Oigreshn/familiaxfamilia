@@ -33,28 +33,27 @@
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- Botón de Actualizar Información -->
+         <!-- Botón de Actualizar Información -->
         <div class="flex justify-center mt-4">
-            <x-primary-button class="px-8 py-2">
-                {{ __('Cambiar Password') }}
-                <div 
-                wire:loading wire:target="password.update"
-                class="inline-block h-4 w-4 ml-2 animate-spin rounded-full border-4 border-solid 
-                border-current border-r-transparent align-[-0.125em] text-white 
-                motion-reduce:animate-[spin_1.5s_linear_infinite]" 
-                role="status">
-            </div>
-            </x-primary-button>
-        </div>
-
-        <!-- Mensaje de estado -->
-        <div class="md:col-span-2 flex items-center justify-center">
-            @if (session('status'))
-                <p x-data="{ show: true }" x-show="show" 
-                class="uppercase border border-green-600 bg-green-100 text-green-600 font-bold p-2 my-5 text-sm rounded-lg">
-                    {{ session('status') }}
-                </p>
-            @endif
+            <x-primary-button class="px-8 py-2" id="update-pass">{{ __('Cambiar Password') }}</x-primary-button>
         </div>
     </form>
 </section>
+
+@push('scripts')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si existe el mensaje 'status' en la sesión
+            @if(session('status') === 'password-updated')
+                Swal.fire({
+                    title: '¡Éxito!',
+                    text: 'Password Actualizado Correctamente.',
+                    icon: 'success',
+                    confirmButtonText: 'Entendido'
+                });
+            @endif
+        });
+    </script> 
+@endpush
+

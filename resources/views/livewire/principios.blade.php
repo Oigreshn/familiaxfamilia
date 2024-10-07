@@ -11,10 +11,16 @@
                     {{ __('PRINCIPIOS') }}
                 </h2>
                 <p class="text-sm sm:text-md font-semibold">
-                    {{ __("Son reglas fundamentales que guian el comportamiento ético y moral de las personas.") }}
+                    {{ __("Son reglas fundamentales que guían el comportamiento ético y moral de las personas.") }}
                 </p>
+                <p class="text-lg text-gray-700 mt-2">
+                    Selecciona hasta 
+                    <span class="text-yellow-500 font-bold">5 principios</span> 
+                    que mejor te representen. ¡Desmárcalos y actualiza para reflejar tus principios!
+                </p>        
             </div>
         </header>
+        
 
         <!-- Colocar la imagen justo después del encabezado en pantallas pequeñas -->
         <div class="block md:hidden w-full justify-center mt-4">
@@ -30,29 +36,20 @@
             <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <!-- Principios -->
                 @foreach ($principios as $principio)
-                <div class="bg-white rounded-lg shadow flex items-center p-3 h-20">
-                    <label class="inline-flex items-center w-full">
-                        <input type="checkbox" wire:model="selectedPrincipios" value="{{ $principio->id }}"
-                            class="form-checkbox h-5 w-5 text-yellow-500 border-yellow-500 bg-transparent rounded">
-                        <span class="ml-2 text-gray-700 font-bold text-base">{{ $principio->descripcion }}</span>
-                    </label>
-                </div>
+                    <div class="bg-white rounded-lg shadow flex items-center p-3 h-20">
+                        <label class="inline-flex items-center w-full">
+                            <input type="checkbox" wire:model="selectedPrincipios" value="{{ $principio->id }}"
+                                class="form-checkbox h-5 w-5 text-yellow-500 border-yellow-500 bg-transparent rounded"
+                                @if (count($selectedPrincipios) >= 5 && !in_array($principio->id, $selectedPrincipios)) disabled @endif> 
+                            <span class="ml-2 text-gray-700 font-bold text-base">{{ $principio->descripcion }}</span>
+                        </label>
+                    </div>
                 @endforeach
             </div>
 
             <!-- Botón Actualizar Talentos -->
             <div class="flex items-center justify-center mt-8 md:col-span-2">
                 <x-primary-button class="px-6 py-2 text-lg">{{ __('Actualizar Principios') }}</x-primary-button>
-            </div>
-
-            <!-- Mensaje de estado -->
-            <div class="md:col-span-2 flex items-center justify-center">
-                @if (session('status'))
-                    <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)" 
-                    class="uppercase border border-green-600 bg-green-100 text-green-600 font-bold p-2 my-5 text-sm rounded-lg">
-                        {{ session('status') }}
-                    </p>
-                @endif
             </div>
         </form>
     </div>
@@ -62,3 +59,20 @@
              class="md:max-h-[600px] lg:max-h-[650px] w-auto object-contain rounded-lg shadow-lg">
     </div>
 </section>
+
+@push('scripts')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+       document.addEventListener('livewire:init', () => {
+            Livewire.on('principiosActualizados', () => {
+                Swal.fire({
+                    title: '¡Éxito!',
+                    text: "Los Principios han sido actualizados correctamente.",
+                    icon: 'success',
+                    confirmButtonText: 'Entendido'
+                });
+            });
+        });
+    </script>
+@endpush
+

@@ -34,7 +34,7 @@
     <div class="md:grid md:grid-cols-6 gap-4">
         {{-- Zona de la Imagen --}}
         <div class="md:col-span-2">
-            <img class="rounded-lg" src="{{ asset('storage/vacantes/' . $vacante->imagen) }}" alt="{{'Imagen Oportunidad ' . $vacante->titulo}}">
+            <img class="rounded-lg" src="{{ $vacante->imagen ? asset('storage/vacantes/' . $vacante->imagen) : asset('images/default-vacante.png') }}">
         </div>
 
         {{-- Zona de la Descripcion --}} 

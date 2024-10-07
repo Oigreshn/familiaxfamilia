@@ -1,13 +1,19 @@
 <?php
 
+use App\Http\Livewire\Habilidades;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TalentoController;
 use App\Http\Controllers\VacanteController;
 use App\Http\Controllers\CandidatoController;
+use App\Http\Controllers\HabilidadController;
 use App\Http\Controllers\MessengerController;
+use App\Http\Controllers\PrincipioController;
 use App\Http\Controllers\ConversacionController;
 use App\Http\Controllers\NotificacionController;
+use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\MensajeNotificacionController;
 
 Route::get('/', HomeController::class)->name('home');
@@ -26,6 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/habilidades', [HabilidadController::class, 'index'])->name('habilidades.index');
+    Route::get('/talentos', [TalentoController::class, 'index'])->name('talentos.index');
+    Route::get('/principios', [PrincipioController::class, 'index'])->name('principios.index');
+    Route::get('/avatar', [AvatarController::class, 'index'])->name('avatar.index');
 });
 
 //Mensajes

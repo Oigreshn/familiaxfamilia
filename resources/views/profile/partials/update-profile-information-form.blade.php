@@ -71,17 +71,23 @@
 
     <!-- Botón de Actualizar Información -->
     <div class="flex justify-center mt-4">
-        <x-primary-button class="px-8 py-2">{{ __('Actualizar Información') }}</x-primary-button>
-    </div>
-
-    <!-- Mensaje de Actualización Exitosa -->
-    <div class="md:col-span-2 flex items-center justify-center">
-        @if (session('status') === 'profile-updated')
-            <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)" 
-                class="uppercase border border-green-600 bg-green-100 text-green-600 font-bold p-2 my-5 text-sm rounded-lg">
-                {{ __('Actualizando Datos Personales.') }}
-            </p>
-        @endif
+        <x-primary-button class="px-8 py-2" id="update-info">{{ __('Actualizar Información') }}</x-primary-button>
     </div>
 </form>
 
+@push('scripts')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si existe el mensaje 'status' en la sesión
+            @if(session('status') === 'profile-updated')
+                Swal.fire({
+                    title: '¡Éxito!',
+                    text: 'Los datos personales han sido actualizados correctamente.',
+                    icon: 'success',
+                    confirmButtonText: 'Entendido'
+                });
+            @endif
+        });
+    </script> 
+@endpush

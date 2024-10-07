@@ -16,18 +16,27 @@ class Talentos extends Component
         $this->selectedTalentos = Auth::user()->talentos->pluck('id')->toArray();
     }
 
+    public function updatedSelectedTalentos()
+    {
+        // Verificar si el usuario selecciona más de 5 talentos
+        if (count($this->selectedTalentos) > 5) {
+            array_pop($this->selectedTalentos); // Quitar el talento seleccionado en exceso
+        }
+    }
+
     public function actualizarTalentos()
     {
         // Sincronizar los talentos seleccionadas con la tabla pivote
         Auth::user()->talentos()->sync($this->selectedTalentos);
 
-        // Mostrar un mensaje de éxito
-        session()->flash('status', 'Talentos Actualizados Exitosamente.');
+         // Disparar evento para mostrar una alerta de éxito
+         $this->dispatch('talentosActualizados'); 
+
     }
 
     public function render()
     {
-        $talentos = Talento::all();
+        $talentos = Talento::orderBy('descripcion')->get();
 
         return view('livewire.talentos', [
             'talentos' => $talentos

@@ -35,7 +35,7 @@
                     <!-- Imagen de la Vacante -->
                     <div class="w-full md:w-auto md:ml-6">
                         <img 
-                            src="{{ $vacante->imagen ? asset('storage/vacantes/' . $vacante->imagen) : asset('images/default-vacante.jpg') }}" 
+                            src="{{ $vacante->imagen ? asset('storage/vacantes/' . $vacante->imagen) : asset('images/default-vacante.png') }}" 
                             alt="{{ 'Imagen vacante ' . $vacante->titulo }}" 
                             class="w-full h-48 md:h-64 object-cover rounded-lg"
                         >

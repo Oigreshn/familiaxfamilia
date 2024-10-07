@@ -1,8 +1,8 @@
 <x-app-layout>
-    <div class="py-12">
-        <div class="rounded-lg max-w-7xl mx-auto overflow-hidden bg-white shadow-sm p-6 divide-y divide-gray-200">
+    <div class="w-full mx-auto overflow-hidden bg-white shadow-sm p-6 divide-y divide-gray-200">
+
             <div class="relative bg-cover bg-center bg-no-repeat rounded-lg overflow-hidden lg:py-24"
-                 style="background-image: url('{{ asset('images/seccionpersonas.png') }}'); height: 70vh; background-position: center;">
+                 style="background-image: url('{{ asset('images/seccionpersonas.png') }}'); height: 80vh; background-size: cover;">
                 
                 <!-- Posicionamiento de logo justo arriba del texto -->
                 <div class="absolute top-8 left-8 flex flex-col items-start">
@@ -27,7 +27,6 @@
                     </p>
                 </div>
             </div>
-        </div>
 
         <!-- PREGUNTA ANTES DE LOS BLOQUES -->
         <div class="flex items-center justify-center text-center">
@@ -53,21 +52,22 @@
                     style="background-image: url('{{ asset('images/base1.png') }}'); height: 50vh;">
                     <!-- Contenedor Blanco Cuadrado -->
                     <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-11/12 sm:w-3/4 h-11/12 sm:h-3/4 mx-auto my-auto">
-                        <div class="text-4xl sm:text-6xl font-bold text-white absolute top-2 sm:top-4 left-2 sm:left-4">1.</div>
+                        <!-- Ajustes de posicionamiento del número para pantallas medianas -->
+                        <div class="text-3xl sm:text-4xl font-bold text-white absolute top-4 left-4 md:top-6 md:left-6 lg:top-8 lg:left-8">1.</div>
                         <div class="text-center p-2 sm:p-4">
-                            <p class="text-white text-sm sm:text-base font-bold">REGÍSTRATE Y CUÉNTANOS QUÉ TE GUSTA HACER Y CUÁLES SON TUS HABILIDADES</p>
+                            <!-- Reducimos el tamaño del texto para pantallas medianas -->
+                            <p class="text-white text-xs sm:text-sm md:text-base font-bold">REGÍSTRATE Y CUÉNTANOS QUÉ TE GUSTA HACER Y CUÁLES SON TUS HABILIDADES</p>
                         </div>
                     </div>
                 </div>
-                
+        
                 <!-- Bloque 2 -->
                 <div class="relative flex justify-center items-center bg-cover bg-center"
                     style="background-image: url('{{ asset('images/base2.png') }}'); height: 50vh;">
-                    <!-- Contenedor Blanco Cuadrado -->
                     <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-11/12 sm:w-3/4 h-11/12 sm:h-3/4 mx-auto my-auto">
-                        <div class="text-4xl sm:text-6xl font-bold text-white absolute top-2 sm:top-4 left-2 sm:left-4">2.</div>
+                        <div class="text-3xl sm:text-4xl font-bold text-white absolute top-4 left-4 md:top-6 md:left-6 lg:top-8 lg:left-8">2.</div>
                         <div class="text-center p-2 sm:p-4">
-                            <p class="text-white text-sm sm:text-base font-bold">EXPLORA ENTRE TODAS LAS OPORTUNIDADES Y EVALÚA CUÁL ENCAJA MEJOR CON TUS CAPACIDADES. TIENES MUCHO QUE OFRECER SI PUNTÚAS Y OBSERVAS TUS FORTALEZAS.</p>
+                            <p class="text-white text-xs sm:text-sm md:text-base font-bold">EXPLORA ENTRE TODAS LAS OPORTUNIDADES Y EVALÚA CUÁL ENCAJA MEJOR CON TUS CAPACIDADES.</p>
                         </div>
                     </div>
                 </div>
@@ -75,29 +75,25 @@
                 <!-- Bloque 3 -->
                 <div class="relative flex justify-center items-center bg-cover bg-center"
                     style="background-image: url('{{ asset('images/base3.png') }}'); height: 50vh;">
-                    <!-- Contenedor Blanco Cuadrado -->
                     <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-11/12 sm:w-3/4 h-11/12 sm:h-3/4 mx-auto my-auto">
-                        <div class="text-4xl sm:text-6xl font-bold text-white absolute top-2 sm:top-4 left-2 sm:left-4">3.</div>
+                        <div class="text-3xl sm:text-4xl font-bold text-white absolute top-4 left-4 md:top-6 md:left-6 lg:top-8 lg:left-8">3.</div>
                         <div class="text-center p-2 sm:p-4">
-                            <p class="text-white text-sm sm:text-base font-bold">LA OPORTUNIDAD ESTÁ AHÍ. ENVÍA UN MENSAJE A LA ORGANIZACIÓN DEL TERCER SECTOR, FAMILIA O PERSONA QUE PUBLICÓ LA OPORTUNIDAD Y PROGRAMA TU PARTICIPACIÓN CON ELLOS.</p>
+                            <p class="text-white text-xs sm:text-sm md:text-base font-bold">LA OPORTUNIDAD ESTÁ AHÍ. ENVÍA UN MENSAJE A LA ORGANIZACIÓN Y PROGRAMA TU PARTICIPACIÓN.</p>
                         </div>
                     </div>
                 </div>
-                
+        
                 <!-- Bloque 4 -->
                 <div class="relative flex justify-center items-center bg-cover bg-center"
                     style="background-image: url('{{ asset('images/base4.png') }}'); height: 50vh;">
-                    <!-- Contenedor Blanco Cuadrado -->
                     <div class="absolute inset-0 border-4 border-white bg-white bg-opacity-30 flex flex-col items-center justify-center w-11/12 sm:w-3/4 h-11/12 sm:h-3/4 mx-auto my-auto">
-                        <div class="text-4xl sm:text-6xl font-bold text-white absolute top-2 sm:top-4 left-2 sm:left-4">4.</div>
+                        <div class="text-3xl sm:text-4xl font-bold text-white absolute top-4 left-4 md:top-6 md:left-6 lg:top-8 lg:left-8">4.</div>
                         <div class="text-center p-2 sm:p-4">
-                            <p class="text-white text-sm sm:text-base font-bold">¡LISTO! FORMALIZA EL ENCUENTRO, OFRECE TODO LO QUE PUEDAS APORTAR, RECIBE TU MONEDA SOCIAL Y UTILÍZALA EN LOS DIFERENTES APOYOS QUE OFRECEMOS.</p>
+                            <p class="text-white text-xs sm:text-sm md:text-base font-bold">FORMALIZA EL ENCUENTRO Y RECIBE TU MONEDA SOCIAL.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>        
-        
-        {{-- Fin de Bloques --}}
-    </div>
+        </div>     
+    </div>   
 </x-app-layout>
