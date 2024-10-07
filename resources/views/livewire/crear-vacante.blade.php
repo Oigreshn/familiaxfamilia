@@ -94,6 +94,7 @@
             <div class="my-5 w-80">
                 @if ($imagen)
                     <p>Vista Previa de Imagen:</p>
+                    <p>{{ $imagen->temporaryUrl() }}</p>
                     <img src="{{ $imagen->temporaryUrl() }}" alt="Vista previa de la imagen">
                 @endif
             </div>
