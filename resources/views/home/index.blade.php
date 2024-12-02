@@ -5,10 +5,11 @@
              style="background-image: url('{{ asset('images/home_manos.png') }}'); height: 75vh; background-size: cover;">
             <div class="flex items-center justify-center h-full w-full px-2 sm:px-4 lg:px-6">
                 <div class="text-center">
-                    <h2 class="text-3xl sm:text-3xl md:text-5xl lg:text-8xl font-extrabold leading-tight tracking-tight text-white">
-                        ¿QUIERES FORMAR PARTE DEL CAMBIO?: ¡VEN Y REGÍSTRATE!
+                    <h2 class="text-3xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white">
+                        ¿QUIERES FORMAR PARTE DEL CAMBIO?:    
+                        ¡VEN Y REGÍSTRATE!
                     </h2>
-                    <p class="text-xl sm:text-xl md:text-2xl lg:text-4xl leading-tight tracking-tight text-center text-white">
+                    <p class="text-xl sm:text-xl md:text-2xl lg:text-3xl leading-tight tracking-tight text-center text-white">
                         Apostamos por los talentos y las habilidades de las personas para generar un gran cambio positivo en nuestra comunidad. 
                         El verdadero talento es suyo, el nuestro, la habilidad de ver que ahí reside su fuerza.
                     </p>
