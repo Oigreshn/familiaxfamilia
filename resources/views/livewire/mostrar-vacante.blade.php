@@ -16,12 +16,12 @@
         <!-- Otras secciones de información -->
     </div>
 
-    <div class="md:grid md:grid-cols-2 bg-gray-50 p-4 my-10">
+    <div class="font-museo300 md:grid md:grid-cols-2 bg-gray-50 p-4 my-10">
         <p class="font-bold text-sm uppercase text-gray-800 my-3">Empresa:
             <span class="normal-case font-normal">{{ $vacante->entidad }}</span>
         </p>
 
-        <p class="font-bold text-sm uppercase text-gray-800 my-3">Último día para postularse:
+        <p class="font-bold text-sm uppercase text-gray-800 my-3">Último día disponible:
             <span class="normal-case font-normal">{{ $vacante->ultimo_dia->toFormattedDateString() }}</span>
         </p>
 
@@ -39,16 +39,18 @@
 
         {{-- Zona de la Descripcion --}} 
         <div class="md:col-span-4">
-            <h2 class="text-2xl font-bold mb-5">Descripción de Oportunidad:</h2>
+            <h2 class="text-2xl font-bold mb-5">Descripción de Anuncio:</h2>
             <p>{{ $vacante->descripcion }}</p>
         </div>
     </div>
 
     @guest
-        <div class="mt-5 bg-gray-50 border border-dashed p-5 text-center">
+        <div class="font-museo300 mt-5 bg-gray-50 border border-dashed p-5 text-center">
             <p>
-                ¿Deseas aplicar a esta Oportunidad?, <a class="font-bold text-indigo-600" href="{{ route('register') }}">
-                    Obten una cuenta y aplica a esta y otras oportunidades
+                ¿Te interesa este Anuncio?, 
+                <a class="font-bold text-indigo-600 hover:underline" 
+                    href="{{ route('login', ['redirect' => request()->fullUrl()]) }}">
+                    Inicia sesión para ponerte en contacto con este y otros anuncios rápidamente.
                 </a>
             </p>
         </div>
@@ -57,7 +59,6 @@
     @can('postular', $vacante)
         <livewire:postular-vacante :vacante="$vacante" />
     @endcan
-
 </div>
 
 <script>
@@ -66,7 +67,7 @@
         
         // URL a compartir (modifica según sea necesario)
         const url = window.location.href;
-        const text = encodeURIComponent('¡Mira esta oportunidad en ' + url + '!');
+        const text = encodeURIComponent('¡Mira este anuncio en ' + url + '!');
 
         // Genera el enlace de compartir usando la API de Web Share si está disponible
         if (navigator.share) {

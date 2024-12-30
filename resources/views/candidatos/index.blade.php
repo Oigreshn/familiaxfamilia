@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Candidatos a Oportunidad') }}
+            {{ __('Contactos interesadas en este Anuncio') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                    <h1 class="text-2xl font-bold text-center my-10">
-                        Candidatos a Oportunidad: {{ $vacante->titulo}}
+                        Interesados en este Anuncio: {{ $vacante->titulo }}
                    </h1>
 
                    <div class="md:flex md:justify-center p-5">
@@ -21,20 +21,11 @@
                                         <p class="text-xl font-medium text-gray-800">{{ $candidato->user->name}}</p>
                                         <p class="text-sm text-gray-600">{{ $candidato->user->email}}</p>
                                         <p class="text-sm text-gray-600">
-                                            Día que se Postuló: <span class="font-normal">{{ $candidato->created_at->diffForHumans() }}
+                                            Fecha de Contacto: <span class="font-normal">{{ $candidato->created_at->diffForHumans() }}
                                                 </span>    
                                         </p>
                                     </div>
                                     <div>
-                                        <a 
-                                            class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm
-                                            leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50"
-                                            href=" {{ asset('storage/cv/' . $candidato->cv) }}"
-                                            target="_blank"
-                                            rel="noreferrer noopener"
-                                        >
-                                            Ver CV
-                                        </a>
                                         <a href="{{ route('mensajes.index', ['vacante' => $vacante->id, 'user_id' => $candidato->user->id]) }}"
                                             class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                                             Contactar

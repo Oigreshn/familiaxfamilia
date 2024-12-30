@@ -3,10 +3,10 @@
         <div class="flex justify-center items-center mb-4">
             <img src="{{ asset('images/cambiar_password.png') }}" alt="Icono Cambiar Password" class="h-16 w-16">
         </div>
-        <h2 class="text-2xl font-bold underline">
+        <h2 class="font-nexabold text-2xl underline">
             {{ __('CAMBIAR PASSWORD') }}
         </h2>
-        <p class="text-center text-md font-semibold">
+        <p class="font-museo300 text-center text-md font-semibold">
             {{ __('Asegúrese de que su cuenta utilice una contraseña larga y aleatoria para mantenerse segura') }}
         </p>
     </header>

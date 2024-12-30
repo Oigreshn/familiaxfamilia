@@ -10,10 +10,10 @@
                 <h2 class="text-xl sm:text-2xl font-bold underline mb-2">
                     {{ __('PRINCIPIOS') }}
                 </h2>
-                <p class="text-sm sm:text-md font-semibold">
+                <p class="font-nexalight text-sm sm:text-md">
                     {{ __("Son reglas fundamentales que guían el comportamiento ético y moral de las personas.") }}
                 </p>
-                <p class="text-lg text-gray-700 mt-2">
+                <p class="font-nexalight text-lg text-gray-700 mt-2">
                     Selecciona hasta 
                     <span class="text-yellow-500 font-bold">5 principios</span> 
                     que mejor te representen. ¡Desmárcalos y actualiza para reflejar tus principios!
@@ -33,7 +33,7 @@
             @method('patch')
 
             <!-- MUESTRA LOS PRINCIPIOS DE LAS TABLAS -->
-            <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="font-museo300 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <!-- Principios -->
                 @foreach ($principios as $principio)
                     <div class="bg-white rounded-lg shadow flex items-center p-3 h-20">

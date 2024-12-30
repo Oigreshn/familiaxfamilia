@@ -1,4 +1,4 @@
-<header class="text-center mb-10"> <!-- Aumentamos el margen inferior -->
+<header class="text-center mb-10"> 
     <div class="flex justify-center items-center mb-4">
         <img src="{{ asset('images/datospersonales.png') }}" alt="Icono Datos Personales" class="h-16 w-16">
     </div>

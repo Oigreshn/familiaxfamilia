@@ -6,10 +6,10 @@
         <h2 class="text-2xl font-bold underline">
             {{ __('Habilidades') }}
         </h2>
-        <p class="text-xl font-semibold">
+        <p class="font-nexalight text-xl">
             {{ __('Selecciona tus habilidades') }}
         </p>
-        <p class="text-lg text-gray-700 mt-2">
+        <p class="font-nexalight text-lg text-gray-700 mt-2">
             Selecciona hasta 
             <span class="text-yellow-500 font-bold">2 habilidades</span> 
             que mejor te representen. ¡Desmárcalas y actualiza para reflejar tus habilidades!
@@ -20,7 +20,7 @@
         @csrf
 
         <!-- Muestra las habilidades de las tablas -->
-        <div class="flex justify-center items-center">
+        <div class="font-museo300 flex justify-center items-center">
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 justify-center mx-auto">
                 @foreach ($habilidades as $index => $habilidad)
                     <div class="relative bg-cover bg-center rounded-lg shadow-md p-4 text-white" style="background-image: url('{{ asset('images/habilidad' . ($index + 1) . '.png') }}'); height: 250px; width: 200px;">

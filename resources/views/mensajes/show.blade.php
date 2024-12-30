@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-semibold">De: {{ $sender->name }}</h3>
-                    <p class="text-sm text-gray-600">En la vacante: {{ $vacante->titulo }}</p>
+                    <p class="text-sm text-gray-600">En el Anuncio: {{ $vacante->titulo }}</p>
                     <p class="text-sm text-gray-600">Para: {{ $receiver->name }}</p>
                     <p class="mt-4">{{ $mensaje->message }}</p>
 

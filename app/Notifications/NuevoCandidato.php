@@ -39,8 +39,8 @@ class NuevoCandidato extends Notification
         $url = url('/notificaciones');
 
         return (new MailMessage)
-                    ->line('Has recibido un nuevo Candidato en tu Oportunidad.')
-                    ->line('La Oportunidad es: ' . $this->nombre_vacante)
+                    ->line('Has recibido un nuevo Contacto en tu Anuncio.')
+                    ->line('El Anuncio es: ' . $this->nombre_vacante)
                     ->action('Ver Notificaciones', $url)
                     ->line('Gracias por utilizar Familia x Familia');
     }

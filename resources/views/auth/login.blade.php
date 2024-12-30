@@ -5,6 +5,9 @@
     <form method="POST" action="{{ route('login') }}" novalidate>
         @csrf
 
+        <!-- Campo oculto para redirección -->
+        <input type="hidden" name="redirect" value="{{ request('redirect') }}">
+
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Correo Electrónico')" />

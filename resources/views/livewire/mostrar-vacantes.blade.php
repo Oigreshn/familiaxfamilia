@@ -7,26 +7,26 @@
                 <div class="p-6 bg-white flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
                     <!-- Detalles de la Vacante -->
                     <div class="flex-1 space-y-3">
-                        <a href="{{ route('vacantes.show', $vacante->id) }}" class="text-2xl font-semibold text-gray-800">
+                        <a href="{{ route('vacantes.show', $vacante->id) }}" class="font-museo300 text-2xl font-semibold text-gray-800">
                             {{ $vacante->titulo }}
                         </a>
-                        <p class="text-md text-gray-700 font-bold">
+                        <p class="text-md text-gray-700 font-museo700">
                             Impartido por {{ $vacante->entidad }}
                         </p>
-                        <p class="text-sm text-gray-600">
+                        <p class="text-sm text-gray-600 font-museo300">
                             Último día: {{ $vacante->ultimo_dia->format('d/m/Y') }}
                         </p>
 
                         <!-- Botones de Acción -->
                         <div class="flex flex-col md:flex-row items-stretch gap-3">
-                            <a href="{{ route('candidatos.index', $vacante) }}" class="bg-slate-700 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
+                            <a href="{{ route('candidatos.index', $vacante) }}" class="bg-slate-700 py-2 px-4 rounded-lg text-white text-xs font-nexabold uppercase text-center">
                                 {{ $vacante->candidatos->count() }} Candidatos
                             </a>
-                            <a href="{{ route('vacantes.edit', $vacante->id) }}" class="bg-amber-500 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
+                            <a href="{{ route('vacantes.edit', $vacante->id) }}" class="bg-amber-500 py-2 px-4 rounded-lg text-white text-xs font-nexabold uppercase text-center">
                                 Editar
                             </a>
                             <button wire:click="$dispatch('mostrarAlerta', { vacante: {{$vacante->id}} })"
-                                class="bg-red-500 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
+                                class="bg-red-500 py-2 px-4 rounded-lg text-white text-xs font-nexabold uppercase text-center">
                                 Eliminar
                             </button>
                         </div>

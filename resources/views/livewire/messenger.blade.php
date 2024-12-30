@@ -2,7 +2,7 @@
     <!-- Mostrar el nombre del usuario y la vacante -->
     <div class="mb-5">
         <h3 class="text-lg font-semibold">Contactando a: {{ $user->name }}</h3>
-        <p class="text-sm text-gray-600">Oportunidad: {{ $vacante->titulo }}</p>
+        <p class="text-sm text-gray-600">Anuncio: {{ $vacante->titulo }}</p>
     </div>
 
    <!-- Mostrar mensajes existentes -->

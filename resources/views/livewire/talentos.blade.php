@@ -10,10 +10,10 @@
                 <h2 class="text-2xl font-bold underline mb-2 text-gray-800">
                     {{ __('TALENTOS') }}
                 </h2>
-                <p class="text-md font-semibold text-gray-600">
+                <p class="font-nexalight text-md text-gray-600">
                     {{ __("Son habilidades naturales o adquiridas que destacan las capacidades únicas de una persona en diversas áreas específicas.") }}
                 </p>
-                <p class="text-lg text-gray-700 mt-2">
+                <p class="font-nexalight text-lg text-gray-700 mt-2">
                     Selecciona hasta 
                     <span class="text-yellow-500 font-bold">5 talentos</span> 
                     que mejor te representen. ¡Desmárcalos y actualiza para reflejar tus talentos!
@@ -33,7 +33,7 @@
             @method('patch')
 
             <!-- Grid para los talentos -->
-            <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="font-museo300 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <!-- Talentos -->
                 @foreach ($talentos as $talento)
                     <div class="bg-white rounded-lg shadow flex items-center p-3 h-20">

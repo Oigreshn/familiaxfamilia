@@ -39,8 +39,8 @@ class NuevoMensaje extends Notification
         $url = url('/notificaciones-mensajes');
 
         return (new MailMessage)
-            ->subject('Nuevo Mensaje en la Oportunidad ' . $this->vacante->titulo)
-            ->line($this->sender->name . ' te ha enviado un mensaje en la Oportunidad ' . $this->vacante->titulo)
+            ->subject('Nuevo Mensaje en el Anuncio ' . $this->vacante->titulo)
+            ->line($this->sender->name . ' te ha enviado un mensaje en el Anuncio ' . $this->vacante->titulo)
             ->line('Mensaje: ' . $this->mensaje->message)
             ->action('Ver Mensajes', $url)
             ->line('Gracias por utilizar Familia x Familia.');

@@ -28,7 +28,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('vacantes.index', absolute: false));
+        // return redirect()->intended(route('vacantes.index', absolute: false));
+        
+        // Maneja la redirección
+        $redirectUrl = $request->input('redirect', route('vacantes.index', absolute: false)); // Dashboard como fallback
+        return redirect()->intended($redirectUrl);
     }
 
     /**
