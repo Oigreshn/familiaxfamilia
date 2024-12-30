@@ -14,11 +14,11 @@
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
-                            {{ __('Mis Oportunidades') }}
+                            {{ __('Mis Anuncios') }}
                         </x-nav-link>
                 
                         <x-nav-link :href="route('vacantes.create')" :active="request()->routeIs('vacantes.create')">
-                            {{ __('Crear una Oportunidad') }}
+                            {{ __('Crear un Anuncio') }}
                         </x-nav-link>
                     </div>
                 @endauth
@@ -230,13 +230,13 @@
                     <x-responsive-nav-link :href="route('vacantes.index')" class="block w-full text-center rounded-full px-4 py-2 text-sm 
                     leading-5 text-white bg-amber-500 hover:bg-amber-600 focus:outline-none focus:bg-amber-600 transition duration-150 ease-in-out" 
                     :active="request()->routeIs('vacantes.index')">
-                        {{ __('Oportunidades') }}
+                        {{ __('Anuncios') }}
                     </x-responsive-nav-link>
 
                     <x-responsive-nav-link :href="route('vacantes.create')" class="block w-full text-center rounded-full px-4 py-2 text-sm 
                     leading-5 text-white bg-amber-500 hover:bg-amber-600 focus:outline-none focus:bg-amber-600 transition duration-150 ease-in-out" 
                     :active="request()->routeIs('vacantes.create')">
-                        {{ __('Crear una Oportunidad') }}
+                        {{ __('Crear un Anuncio') }}
                     </x-responsive-nav-link>
                 </div>
 

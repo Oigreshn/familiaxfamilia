@@ -5,7 +5,7 @@
         <div class="mr-4">
             <img src="{{ asset('images/oportunidad.png') }}" alt="Icono" class="w-16 h-16"> <!-- Reemplaza con la ruta de tu icono -->
         </div>
-        <h2 class="text-2xl font-semibold text-gray-800"> PUBLICAR OPORTUNIDAD</h2>
+        <h2 class="text-2xl font-semibold text-gray-800"> PUBLICAR ANUNCIO</h2>
     </div>
 
      <!-- Contenedor de los Campos del Formulario -->
@@ -13,14 +13,14 @@
 
         <!-- INGRESO DE TITUTLO DE OPORTUNIDAD -->
         <div>
-            <x-input-label for="titulo" :value="__('Titulo de Oportunidad')" />
+            <x-input-label for="titulo" :value="__('Titulo del Anuncio')" />
             <x-text-input 
                 id="titulo" 
                 class="block mt-1 w-full" 
                 type="text" 
                 wire:model="titulo" 
                 :value="old('titulo')" 
-                placeholder="Titulo de Oportunidad"
+                placeholder="Titulo del Anuncio"
             />
             <x-input-error :messages="$errors->get('titulo')" class="mt-2" />
         </div>
@@ -51,7 +51,7 @@
                 type="text" 
                 wire:model="entidad" 
                 :value="old('entidad')" 
-                placeholder="Nombre de la Entidad que Ofrece la Oportunidad"
+                placeholder="Nombre de la Entidad que publica el Anuncio"
             />
             <x-input-error :messages="$errors->get('entidad')" class="mt-2" />
         </div>
@@ -71,10 +71,10 @@
 
         <!-- DESCRIPCION DE LA OPORTUNIDAD -->
         <div>
-            <x-input-label for="descripcion" :value="__('Descripcion de Oportunidad')" />
+            <x-input-label for="descripcion" :value="__('Descripcion del Anuncio')" />
             <textarea 
                 wire:model="descripcion" 
-                placeholder="Haz una descripción de la oportunidad que estas Ofreciendo"
+                placeholder="Haz una descripción del Anuncio"
                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500
                 focus:ring-opacity-50 w-full h-72">
             </textarea>
@@ -105,7 +105,7 @@
     <!-- BOTÓN DE CREAR OPORTUNIDAD -->
     <div class="flex justify-center mt-4">
         <x-primary-button class="bg-red-500 px-8 py-2" wire:loading.attr="disabled">
-            {{ __('Crear Oportunidad') }}
+            {{ __('Crear Anuncio') }}
             <div 
                 wire:loading wire:target="crearVacante"
                 class="inline-block h-4 w-4 ml-2 animate-spin rounded-full border-4 border-solid 
