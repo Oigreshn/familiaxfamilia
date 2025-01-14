@@ -24,6 +24,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'rol',
         'direccion',
         'movil',
+        'profile_image',
+        'nameuser',
+        'sobremi',
     ];
 
     /**
@@ -62,5 +65,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function principios()
     {
         return $this->belongsToMany(Principio::class, 'principio_user')->withTimestamps();
+    }
+
+    public function organizaciones()
+    {
+        return $this->belongsToMany(Organizacion::class, 'organizacion_user')->withTimestamps();
     }
 }

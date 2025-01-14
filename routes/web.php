@@ -3,6 +3,7 @@
 use App\Http\Livewire\Habilidades;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TalentoController;
 use App\Http\Controllers\VacanteController;
@@ -12,8 +13,7 @@ use App\Http\Controllers\MessengerController;
 use App\Http\Controllers\PrincipioController;
 use App\Http\Controllers\ConversacionController;
 use App\Http\Controllers\NotificacionController;
-use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\OrganizacionController;
 use App\Http\Controllers\MensajeNotificacionController;
 
 Route::get('/', HomeController::class)->name('home');
@@ -36,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/talentos', [TalentoController::class, 'index'])->name('talentos.index');
     Route::get('/principios', [PrincipioController::class, 'index'])->name('principios.index');
     Route::get('/avatar', [AvatarController::class, 'index'])->name('avatar.index');
+    Route::post('/profile/update-image', [ProfileController::class, 'updateProfileImage'])->name('profile.updateImage');
+    Route::delete('/profile/delete-image', [ProfileController::class, 'deleteImage'])->name('profile.deleteImage');
+    Route::get('/organizaciones', [OrganizacionController::class, 'index'])->name('organizaciones.index');
 });
 
 //Mensajes

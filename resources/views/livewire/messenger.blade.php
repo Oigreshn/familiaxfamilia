@@ -1,39 +1,51 @@
 <div>
-    <!-- Mostrar el nombre del usuario y la vacante -->
+   <!-- Mostrar el nombre del usuario y la vacante -->
     <div class="mb-5">
         <h3 class="text-lg font-semibold">Contactando a: {{ $user->name }}</h3>
         <p class="text-sm text-gray-600">Anuncio: {{ $vacante->titulo }}</p>
     </div>
 
-   <!-- Mostrar mensajes existentes -->
-   <div id="message-list" class="message-list space-y-4 mb-5 max-h-80 overflow-y-auto">
+    <!-- Mostrar mensajes existentes -->
+    <div id="message-list" class="message-list space-y-4 mb-5 max-h-80 overflow-y-auto">
         @forelse($messages as $message)
             @if($message['sender_id'] == auth()->id())
                 <!-- Mensajes del usuario autenticado (Emisor) -->
-                <div class="flex justify-end">
+                <div class="flex justify-end items-start space-x-2">
+                    <!-- Imagen del usuario autenticado -->
+                    <img loading="lazy" 
+                        src="{{ Auth::user()->profile_image ? asset('storage/profiles/' . Auth::user()->profile_image) : asset('images/datospersonales.png') }}" 
+                        alt="Imagen de Perfil del Emisor" 
+                        class="h-10 w-10 rounded-full object-cover border border-gray-300 shadow-sm">
+                    
                     <div class="bg-indigo-500 text-white p-4 rounded-lg max-w-xs shadow">
                         <p>{{ $message['message'] }}</p>
                         @if($message['archivo'])
                             <!-- Mostrar ícono para el archivo adjunto -->
-                            <a href="{{ asset('storage/mensajes/' . $message['archivo']) }}" class="text-gray-800" target="_blank" rel="noopener noreferrer">
+                            <a href="{{ asset('storage/mensajes/' . $message['archivo']) }}" class="text-gray-300 underline" target="_blank" rel="noopener noreferrer">
                                 Ver Archivo Adjunto
                             </a>
                         @endif
-                        <span class="text-xs text-gray-300">{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}</span>
+                        <span class="text-xs text-gray-300 block mt-2">{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}</span>
                     </div>
                 </div>
             @else
                 <!-- Mensajes del receptor -->
-                <div class="flex justify-start">
+                <div class="flex justify-start items-start space-x-2">
+                    <!-- Imagen del receptor -->
+                    <img loading="lazy" 
+                        src="{{ $user->profile_image ? asset('storage/profiles/' . $user->profile_image) : asset('images/datospersonales.png') }}" 
+                        alt="Imagen de Perfil del Receptor" 
+                        class="h-10 w-10 rounded-full object-cover border border-gray-300 shadow-sm">
+                    
                     <div class="bg-gray-300 text-gray-800 p-4 rounded-lg max-w-xs shadow">
                         <p>{{ $message['message'] }}</p>
                         @if($message['archivo'])
                             <!-- Mostrar ícono para el archivo adjunto -->
-                            <a href="{{ asset('storage/mensajes/' . $message['archivo']) }}" class="text-blue-600" target="_blank" rel="noopener noreferrer">
+                            <a href="{{ asset('storage/mensajes/' . $message['archivo']) }}" class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
                                 Ver Archivo Adjunto
                             </a>
                         @endif
-                        <span class="text-xs text-gray-600">{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}</span>
+                        <span class="text-xs text-gray-600 block mt-2">{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}</span>
                     </div>
                 </div>
             @endif
@@ -43,6 +55,7 @@
             </div>
         @endforelse
     </div>
+
 
 <!-- Formulario de envío de mensajes -->
 <form wire:submit.prevent="sendMessage">
