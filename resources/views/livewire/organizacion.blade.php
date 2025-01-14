@@ -144,7 +144,7 @@
 
         <div class="flex items-center justify-center mt-8">
             @if ($selectedOrganization)
-                <x-primary-button wire:click="createOrAttachOrganization"  class="bg-indigo-500 text-white px-6 py-3 rounded-lg">
+                <x-primary-button type="submit" class="bg-indigo-500 text-white px-6 py-3 rounded-lg">
                     {{ __('Editar') }}
                 </x-primary-button> 
         
@@ -154,7 +154,7 @@
                     {{ __('Eliminar') }}
                 </x-danger-button>
             @else
-                <x-primary-button wire:click="createOrAttachOrganization"  class="bg-amber-500 text-white px-6 py-3 rounded-lg">
+                <x-primary-button type="submit" class="bg-amber-500 text-white px-6 py-3 rounded-lg">
                     {{ __('Guardar') }}
                 </x-primary-button>
             @endif
